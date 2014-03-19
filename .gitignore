@@ -215,3 +215,14 @@ pip-log.txt
 .mr.developer.cfg
 *.svn-base
 *.class
+.svn/entries
+.svn/format
+.svn/wc.db
+target/classes/cerberus.properties
+target/classes/spring-context-rpc.xml
+target/classes/spring-context-service.xml
+target/classes/spring-context-servlet.xml
+target/classes/spring-context.xml
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+target/m2e-wtp/web-resources/META-INF/maven/com.multiagent.hawklithm/Cerberus/pom.properties
+target/m2e-wtp/web-resources/META-INF/maven/com.multiagent.hawklithm/Cerberus/pom.xml
