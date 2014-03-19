@@ -1,0 +1,124 @@
+@bg-color:#efefed;
+@border-color:#bbcbd1;
+@font-color:#818386;
+body{
+	background-color:@bg-color;
+	font-family:微软雅黑;
+	font-size: 16px;
+	h1.orderStatus{
+		width:90%;
+		margin: 0 auto;
+		margin-top: 20px;
+		font-size:25px;
+		color:#920101;
+		border-bottom:1px solid #920101;
+	}
+	section{
+		width:78%;
+		margin: 0 auto;
+		border:1px solid #bbcbd1;
+		// border-left:1px solid #bbcbd1;
+		// border-right:1px solid #bbcbd1;
+		background-color: white;
+		color:@font-color;
+		h1{
+			font-size: 22px;
+			color:black;
+		}
+	}
+	// section:nth-child(2){
+	// 	margin-top:20px;
+	// 	border-top:1px solid #bbcbd1;
+	// }
+	section.orderID{
+		color:black;
+		height: 130px;
+		margin-top: 20px;
+		span{
+			display:inline-block;
+			margin-top:20px;
+			font-weight:bold;
+		}
+		span:first-child{
+			color:black;
+			margin-left: 20px;
+		}
+		span:nth-child(2){
+			margin-left:20px;
+		}
+		span.complete{
+			color:#00a651;
+			font-weight: bold;
+		}
+
+		div.barContent{
+			width: 740px;
+			margin: 0 auto;
+			margin-top: 16px;
+			div.circle{
+				position:relative;
+				display:inline-block;
+				height:16px;
+				width:16px;
+				border-radius:10px;
+				background-color: #00a651;
+				overflow:visible;
+				p{
+					width: 89px;
+					font-size: 12px;
+					position: absolute;
+					top: 10px;
+					left: -70%;
+				}
+			}
+			div.bar{
+				display:inline-block;
+				margin-right:20px;
+				margin-left: 20px;
+				height:16px;
+				width:170px;
+				border-radius:10px;
+				background-color: #00a651;
+			}
+		}
+	}//end section.orderID
+	section.processInfor{
+		margin-top: 20px;
+		border-bottom:none;
+		table{
+			width:100%;
+			tr{
+				height: 25px;
+				th{
+					background-color:#e2e5e7;
+					height:30px;
+					color:black;
+					font-weight:bold;
+				}
+				td:nth-child(1){
+					width:20%;
+					text-align:center;
+				}
+				td:nth-child(2){
+					width:60%;
+					text-align:center;
+				}
+				td:nth-child(3){
+					width:20%;
+					text-align:center;
+				}
+			}
+		}
+	}//end section.processInfo
+	section.orderInfo, section.productList{
+		 h1{
+		 	margin-left:80px;
+		 }
+		 p{
+		 	margin-left:80px;
+		 	span{
+		 		color: #ed1c24;
+		 	}
+		 }
+	}//end section.orderInfo
+}

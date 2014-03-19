@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security-3.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+	<!--订单管理交互servlet  -->
+	<bean id="OrderManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="orderManagerExecutor"/>
+	</bean>
+	<!--运单管理交互servlet  -->
+	<bean id="TransportManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="transportManagerExecutor"/>
+	</bean>
+	<!-- 医院信息管理交互servlet -->
+	<bean id="HospitalManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="hospitalManagerExecutor"/>
+	</bean>
+	<!-- 设备管理交互servlet -->
+	<bean id="MachineManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="machineManagerExecutor"/>
+	</bean>
+	<!-- 员工管理交互servlet -->
+	<bean id="StaffManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="staffManagerExecutor"/>
+	</bean>
+	<!-- 用户管理交互servlet -->
+	<bean id="UserManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="userManagerExecutor"/>
+	</bean>
+	<!-- 交通工具管理交互servlet -->
+	<bean id="VehicleManagerServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="vehicleManagerExecutor"/>
+	</bean>
+	<!-- 流水信息管理交互servlet -->
+	<bean id="FlowRecordServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="executor" ref="flowRecordManagerExecutor"/>
+	</bean>
+	<!-- 流水线过程实时信息交互servlet -->
+	<bean id="processInfoServlet" class="com.hawklithm.cerberus.servlet.MessageTranslateServlet">
+		<property name="executor" ref="processInfoManagerExecutor"/>
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+	
+	
+	<!-- 订单交互 -->
+	<bean id="orderManagerExecutor" class="com.hawklithm.cerberus.executor.OrderManagerExecutor">
+		<property name="orderManager" ref="orderManager" />
+	</bean>
+<!--  	<bean id="OrderManagerServlet" class="com.hawklithm.cerberus.servlet.OrderManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+-->
+	<!-- 运单交互 -->
+	<bean id="transportManagerExecutor" class="com.hawklithm.cerberus.executor.TransportManagerExecutor">
+		<property name="transportManager" ref="transportManager" />
+		<property name="gpsManager" ref="gpsManager" />
+	</bean>
+<!--  	<bean id="TransportManagerServlet" class="com.hawklithm.cerberus.servlet.TransportManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="transportManagerExecutor" ref="transportManagerExecutor" />
+	</bean>
+-->
+	<!-- 医院信息交互 -->
+	<bean id="hospitalManagerExecutor" class="com.hawklithm.cerberus.executor.HospitalManagerExecutor">
+		<property name="hospitalInfoManager" ref="hospitalInfoManager" />
+	</bean>
+<!--  	<bean id="HospitalManagerServlet" class="com.hawklithm.cerberus.servlet.HospitalManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="hospitalManagerExecutor" ref="hospitalManagerExecutor" />
+	</bean>
+-->
+	<!-- 设备信息交互 -->
+	<bean id="machineManagerExecutor" class="com.hawklithm.cerberus.executor.MachineManagerExecutor">
+		<property name="machineInfoManager" ref="machineInfoManager" />
+	</bean>
+<!--  	<bean id="MachineManagerServlet" class="com.hawklithm.cerberus.servlet.MachineManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="machineManagerExecutor" ref="machineManagerExecutor" />
+	</bean>
+-->
+	<!-- 员工信息交互 -->
+
+	<bean id="staffManagerExecutor" class="com.hawklithm.cerberus.executor.StaffManagerExecutor">
+		<property name="staffInfoManager" ref="staffInfoManager" />
+	</bean>
+<!--  	<bean id="StaffManagerServlet" class="com.hawklithm.cerberus.servlet.StaffManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="staffManagerExecutor" ref="staffManagerExecutor" />
+	</bean>
+-->
+	<!-- 用户信息交互 -->
+	<bean id="userManagerExecutor" class="com.hawklithm.cerberus.executor.UserManagerExecutor">
+		<property name="userInfoManager" ref="userInfoManager" />
+	</bean>
+<!--  	<bean id="UserManagerServlet" class="com.hawklithm.cerberus.servlet.UserManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="userManagerExecutor" ref="userManagerExecutor" />
+	</bean>
+-->
+	<!-- 车辆信息交互 -->
+	<bean id="vehicleManagerExecutor" class="com.hawklithm.cerberus.executor.VehicleManagerExecutor">
+		<property name="vehicleInfoManager" ref="vehicleInfoManager" />
+	</bean>
+<!--  	<bean id="VehicleManagerServlet" class="com.hawklithm.cerberus.servlet.VehicleManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="vehicleManagerExecutor" ref="vehicleManagerExecutor" />
+	</bean>
+-->
+	<!-- 流水信息交互 -->
+	<bean id="flowRecordManagerExecutor" class="com.hawklithm.cerberus.executor.FlowRecordManagerExecutor">
+		<property name="flowRecordManager" ref="flowRecordManager" />
+	</bean>
+<!--  	<bean id="FlowRecordServlet" class="com.hawklithm.cerberus.servlet.FlowRecordManagerServlet">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="flowRecordManagerExecutor" ref="flowRecordManagerExecutor"/>
+	</bean>
+-->
+	<!-- 流水线过程实时信息交互 -->
+	<bean id="processInfoManagerExecutor" class="com.hawklithm.cerberus.executor.ProcessInfoManagerExecutor">
+		<property name="processInfoManager" ref="processInfoManager"/>
+	</bean>
+</beans>

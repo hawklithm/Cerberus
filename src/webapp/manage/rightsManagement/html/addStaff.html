@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>add staff</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/adduser.css">
+
+</head>
+<body>
+	<h1>添加职员</h1> 
+	<form>
+		<div class = "left">
+			<span>职员ID</span>
+			<span>姓名</span>
+			<span>密码</span>
+			<span>性别</span>
+			<span>年龄</span>
+			<span>所属科室</span>
+			<span>职员状态</span>
+
+		</div>
+		<div class = "right">
+			<input type = "text" readonly = "true"> 
+			<input type = "text"> 
+			<input type = "password"> 
+			<label for = "boy">男</label>
+			<input id = "boy" name = "sex" type = "radio">
+			<label for = "girl">女</label>
+			<input id = "girl" name = "sex" type = "radio">
+			<input type = "number" min = "18" max = "100" placeholder = "年龄">
+			<select id = "keshi">
+				<option>对设备信息的的操作权限</option>
+				<option>对设备信息的的操作权限</option>
+				<option>对设备信息的的操作权限</option>
+				<option>对设备信息的的操作权限</option>
+				<option>对设备信息的的操作权限</option>
+			</select>
+			<label for = "Resignation">离职</label>
+			<input id = "Resignation" name = "status" type = "radio">
+			<label for = "Work">在职</label>
+			<input id = "Work" name = "status" type = "radio">
+			<input style = "float:right;" type = "button" value = "确定添加">
+		</div>
+
+		 
+	</form>
+	 
+	 
+	
+</body>
+</html>

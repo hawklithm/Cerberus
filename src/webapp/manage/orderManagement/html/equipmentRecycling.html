@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>orderSentOut</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/orderSentOut.css">
+    <link rel="stylesheet" href="../../css/jquery-ui-1.10.3.custom.min.css"/>
+
+</head>
+<body>
+	<h1>订单回收</h1>
+	<section>
+		<form>
+			<select id = "selectTranspoetOrder">
+				<option>所有的订单</option>
+				<option>已回收订单</option>
+				<option>未回收订单</option>
+			</select>
+			<label >订单编号</label><input id = "transportOrderNum" type = "text">
+			<label>医院编号</label><input id = "orderNUm" type = "text">
+			<label>下单时间所属时间段</label><input id = "beginTime" type = "date"><span>-</span><input id = "endTime" type = "date">
+			<input type = "submit" value = "查询" readonly = "readonly">
+		</form>
+	</section>
+	<table>
+		<tr>
+			<th class = "first">订单编号</th>
+			<th class = "second">所属医院</th>
+			<th class = "third">订单内容</th>
+			<th class = "fourth">订单状态</th>
+			<th class = "fifth">下单时间</th>
+            <th class = "sixth">订单详情</th>
+		</tr>
+	</table>
+	<div class = "page">
+		<a class = "previous" href="javascript:;">上一页</a>
+		<span href="javascript:;">-</span>
+		<a class = "next" href="javascript:;">下一页</a>
+	</div>
+    <div id="dialog" title="订单详情">
+    </div>
+	<!-- <button>确定回收</button> -->
+	<script type="text/javascript" src = "../../js/jquery.min.js"></script>
+    <script type = "text/javascript" src = "../../js/mustache.js"></script>
+    <script type = "text/javascript" src = "../../js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src = "../js/equipmentRecyling.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>allocationOfPersonAndVehicles</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/orderSentOut.css">
+	
+</head>
+<body>
+	<h1>运输单信息</h1>
+	<section>
+		<form>
+			<select id = "selectTranspoetOrder">
+				<option value="0">所有的运单</option>
+				<option value="1">已运到运单</option>
+				<option value="2">未运到运单</option>
+			</select>
+			<label >运单编号</label><input id = "transportOrderNum" type = "text">
+			<label>订单编号</label><input id = "orderNum" type = "text">
+			<label>车辆编号</label><input id = "vehicleNum" type = "text">
+			<label>时间段</label><input id = "beginTime" type = "date"><span>-</span><input id = "endTime" type = "date">
+			<input id="transOrderQuery" type = "button" value = "查询" readonly = "readonly">
+		</form>
+	</section>
+	<table>
+		<tr>
+			<th class = "first">运单编号</th>
+			<th class = "second">订单编号</th>
+			<th class = "third">车辆编号</th>
+			<th class = "fourth">实时到达地点</th>
+			<th class = "fifth">发货时间</th>
+		</tr>
+	</table>
+	<div class = "page">
+		<a class = "previous" href="javascript:;">上一页</a>
+		<span href="javascript:;">-</span>
+		<a class = "next" href="javascript:;">下一页</a>
+	</div>
+
+	<script type="text/javascript" src = "../../js/jquery.min.js"></script>
+    <script type="text/javascript" src = "../../js/mustache.js"></script>
+	<script type="text/javascript" src = "../js/logisticsController.js"></script>
+
+</body>
+</html>
+<script type="text/javascript" src = "../../js/jquery.min.js"></script>
+<script type="text/javascript" src = "../../js/dateController.js"></script>

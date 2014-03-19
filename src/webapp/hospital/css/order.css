@@ -1,0 +1,115 @@
+body {
+  background-color: #efefed;
+  font-family: 微软雅黑;
+  font-size: 16px;
+}
+body h1.orderStatus {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 25px;
+  color: #920101;
+  border-bottom: 1px solid #920101;
+}
+body section {
+  width: 78%;
+  margin: 0 auto;
+  border: 1px solid #bbcbd1;
+  background-color: white;
+  color: #818386;
+}
+body section h1 {
+  font-size: 22px;
+  color: black;
+}
+body section.orderID {
+  color: black;
+  height: 130px;
+  margin-top: 20px;
+}
+body section.orderID span {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+body section.orderID span:first-child {
+  color: black;
+  margin-left: 20px;
+}
+body section.orderID span:nth-child(2) {
+  margin-left: 20px;
+}
+body section.orderID span.complete {
+  color: #00a651;
+  font-weight: bold;
+}
+body section.orderID div.barContent {
+  width: 740px;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+body section.orderID div.barContent div.circle {
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: 10px;
+  background-color: #00a651;
+  overflow: visible;
+}
+body section.orderID div.barContent div.circle p {
+  width: 89px;
+  font-size: 12px;
+  position: absolute;
+  top: 10px;
+  left: -70%;
+}
+body section.orderID div.barContent div.bar {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 16px;
+  width: 170px;
+  border-radius: 10px;
+  background-color: #00a651;
+}
+body section.processInfor {
+  margin-top: 20px;
+  border-bottom: none;
+}
+body section.processInfor table {
+  width: 100%;
+}
+body section.processInfor table tr {
+  height: 25px;
+}
+body section.processInfor table tr th {
+  background-color: #e2e5e7;
+  height: 30px;
+  color: black;
+  font-weight: bold;
+}
+body section.processInfor table tr td:nth-child(1) {
+  width: 20%;
+  text-align: center;
+}
+body section.processInfor table tr td:nth-child(2) {
+  width: 60%;
+  text-align: center;
+}
+body section.processInfor table tr td:nth-child(3) {
+  width: 20%;
+  text-align: center;
+}
+body section.orderInfo h1,
+body section.productList h1 {
+  margin-left: 80px;
+}
+body section.orderInfo p,
+body section.productList p {
+  margin-left: 80px;
+}
+body section.orderInfo p span,
+body section.productList p span {
+  color: #ed1c24;
+}

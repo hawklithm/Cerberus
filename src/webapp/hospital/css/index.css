@@ -1,0 +1,86 @@
+body {
+  background-color: #efefed;
+}
+#all {
+  width: 100%;
+  height: 850px;
+  margin: 0 auto;
+}
+#all header {
+  width: 100%;
+  height: 59px;
+  background-color: #890101;
+  box-shadow: 0px 1280px 6px #282827;
+}
+#all header .contentHeader {
+  width: 1280px;
+  margin: 0 auto;
+}
+#all header .contentHeader img {
+  margin-left: 94px;
+  margin-top: 8px;
+}
+#all header .contentHeader nav {
+  margin-right: 37px;
+  float: right;
+}
+#all header .contentHeader nav ul li {
+  height: 59px;
+  line-height: 59px;
+  float: right;
+  display: inline;
+  font-size: 16px;
+  margin-right: 57px;
+  font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial, "SimSun", sans-serif;
+}
+#all header .contentHeader nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+#all header .contentHeader nav ul li:hover {
+  color: #222222;
+  cursor: pointer;
+}
+#all #slider {
+  width: 1024px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+#all footer {
+  width: 426px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+#all footer ul {
+  height: 16px;
+}
+#all footer ul li {
+  display: block;
+  float: left;
+  padding-right: 14px;
+  margin-left: 14px;
+  border-right: 1px solid;
+  font-size: 11px;
+  font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial, "SimSun", sans-serif;
+}
+#all footer ul li a {
+  text-decoration: none;
+  color: black;
+  /*font-weight: bold*/
+
+}
+#all footer ul li#last {
+  border-right: 0px;
+}
+#all footer p {
+  text-align: center;
+  font-family: "Microsoft Yahei", Tahoma, Helvetica, Arial, "SimSun", sans-serif;
+  font-size: 11px;
+  display: block;
+  height: 16px;
+  margin-top: 3px;
+  padding-bottom: 20px;
+  /*font-weight: bold*/
+
+}

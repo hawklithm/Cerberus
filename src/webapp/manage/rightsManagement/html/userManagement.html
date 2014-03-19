@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>user management</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/userManagement.css">
+</head>
+<body>
+	<h1>用户管理</h1>
+	<section>
+		<input name = "no" id = "no" type = "text">
+		<label for = "no">查询</label>
+		<div id="init">
+			<input name = "yes" id = "yes" type = "button" value = "编辑">
+		</div>
+		<div id="edit">
+			<input name = "all" id = "all" type = "button" value = "全选">
+			<input name = "opposite" id = "opposite" type = "button" value = "反选">
+			<input name = "delete" id = "delete" type = "button" value = "删除">
+			<input name = "cancel" id = "cancel" type = "button" value = "取消">
+			<input name = "verify" id = "verify" type = "button" value = "确定">
+		</div>
+		<div class="clear"></div>
+	</section>
+	<form>
+	<table>
+		<tr>
+			<th class="check"/></th>
+			<th class = "userId">用户ID</th>
+			<th class = "role">用户权限</th>
+			<th class = "username">用户名</th>
+			<th class = "isEmployee">是否厂内员工</th>
+			<th class = "hospitalId">医院ID</th>
+			<th class = "enable">账户状态</th>
+			<th class = "createdTime">创建时间</th>
+			<th class = "modifiedTime">上次修改时间</th>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>等级一</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>最高权限</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>最高权限</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>最高权限</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>最高权限</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" /></td>
+			<td>2011060040020</td>
+			<td>最高权限</td>
+			<td>gxkl</td>
+			<td>是</td>
+			<td>123456</td>
+			<td>已激活</td>
+			<td>2013-2-30</td>
+			<td>2013-1-30</td>
+		</tr>
+	</table>
+	</form>
+	<div class = "page">
+		<a class = "previous" href="javascript:;">上一页</a>
+		<span href="javascript:;">-</span>
+		<a class = "next" href="javascript:;">下一页</a>
+	</div>
+	 
+</body>
+</html>
+<script type="text/javascript" src = "../../js/jquery.min.js"></script>
+<script type = "text/javascript" src = "../../js/mustache.js"></script>
+<script type = "text/javascript" src = "../js/userManagement.js"></script>

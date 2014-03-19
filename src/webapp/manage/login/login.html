@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../css/ico/favicon.png">
+    <title>Signin Template for Bootstrap</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+    	background-color: #efefed;
+    }
+    .container{
+    	width: 400px;
+    }
+    a.sginin{
+    	text-align: right;
+    	text-decoration: underline;
+    	float: right;
+    }
+    a:hover{
+    	cursor: pointer;
+    }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" role="form" action="/Cerberus/j_spring_security_check" method="post">
+        <h2 class="form-signin-heading">请登录</h2>
+        <input type="text" id = "username"  name="j_username"  class="form-control" placeholder="username" required autofocus>
+        <input type="password" id = "password" name="j_password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" >登录</button>  
+        
+       
+        <a class = "sginin">注册</a>
+      </form>
+
+    </div> 
+  </body>
+</html>
+
+
+

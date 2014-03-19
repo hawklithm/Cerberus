@@ -1,0 +1,54 @@
+.wrapper section table tr .first {
+  width: 200px;
+  text-align: center;
+}
+.wrapper section table tr .second {
+  width: 200px;
+  text-align: center;
+}
+.wrapper section table tr .third {
+  width: 100px;
+  text-align: center;
+}
+.wrapper section table tr .fourth {
+  width: 50px;
+  text-align: center;
+}
+.wrapper section table tr .fifth {
+  width: 120px;
+  text-align: center;
+}
+.wrapper section table tr .sixth {
+  width: 40px;
+  text-align: center;
+}
+.wrapper section table tr .sixth a {
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/eye.png);
+  background-repeat: no-repeat;
+  text-decoration: none;
+}
+.wrapper section table tr .sixth a:hover {
+  cursor: pointer;
+  background-image: url(../images/eye-hover.png);
+  background-repeat: no-repeat;
+  text-decoration: none;
+}
+.wrapper section table tr .seventh {
+  width: 40px;
+  text-align: center;
+}
+.wrapper section table tr .seventh a {
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/delete.png);
+  background-repeat: no-repeat;
+  text-decoration: none;
+}
+.wrapper section table tr .seventh a:hover {
+  cursor: pointer;
+  background-image: url(../images/delete-hover.png);
+  background-repeat: no-repeat;
+  text-decoration: none;
+}

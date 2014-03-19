@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security-3.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+
+	<bean id="appServer" class="com.multiagent.hawklithm.netty.AppInterfaceServer">
+	  	<constructor-arg index="0">
+			<value>48800</value>
+		</constructor-arg>
+		<property name="handler" ref="appHandler" />
+	</bean>
+	
+	
+	<bean id="singleTimeResponsor" class="com.hawklithm.cerberus.responsor.impl.AppServiceSingleTimeResponsor"/>
+
+	<bean id="appHandler"
+		class="com.multiagent.hawklithm.net.handler.AppServiceNettyHandler" />
+
+	<bean id="flowRecordAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="executor" ref="flowRecordManagerExecutor" />
+		<property name="targetUrl" value="/FlowRecordManager" />
+		<property name="responsor" ref="singleTimeResponsor"/>
+	</bean>
+	<bean id="vehicleAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="vehicleManagerExecutor" />
+		<property name="targetUrl" value="/VehicleManager" />
+	</bean>
+	<bean id="userAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="userManagerExecutor" />
+		<property name="targetUrl" value="/UserManager" />
+	</bean>
+	<bean id="staffAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="staffManagerExecutor" />
+		<property name="targetUrl" value="/StaffManager" />
+	</bean>
+	<bean id="machineAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="machineManagerExecutor" />
+		<property name="targetUrl" value="/MachineManager" />
+	</bean>
+	<bean id="hospitalAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="hospitalManagerExecutor" />
+		<property name="targetUrl" value="/HospitalManager" />
+	</bean>
+	<bean id="processInfoAppService"
+		class="com.hawklithm.cerberus.appService.ProcessInfoServiceTranslator" init-method="init">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="processInfoManagerExecutor" />
+		<property name="targetUrl" value="/ProcessInfoManager" />
+	</bean>
+</beans>

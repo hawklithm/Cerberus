@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>index</title>
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		
+	</head>
+	<body class="cbp-spmenu-push" style="background-color:#efefed">
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+            <div class = "hello"></div>
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="aFirst orderDetail" href="#">订单详情</a> 
+<!-- 			<a class = "orderPicking" href="#">订单配货</a>
+			<a class = "orderSentOut" href="#">订单出库</a> 
+			<a class = "hospitalSign" href="#">医院签收</a> --> 
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s2">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="aFirst transportOrder" href="#">运单信息显示</a> 
+			<a class="allocationOfPersonnelAndVehicles" href="#">人员车辆显示</a> 
+			<a class = "ordersPath" href="#">订单路径显示</a> 
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s3">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class = "aFirst itemInformation" href="#">器械历史信息</a>
+			<a class = "packageInformation" href="#">手术包历史信息</a>  
+			<!-- <a class="aFirst equipmentPretreatment" href="#">器械预处理</a> 
+			<a class = "cleaningDisinfection" href="#">清洗消毒</a> 
+			<a class = "equipmentInspection" href="#">器械检查</a> 
+			<a class = "bale" href="#">打包</a> 
+			<a class = "sterilization" href="#">灭菌</a> 
+			<a class = "sterileStorage" href="#">无菌存放</a> --> 
+
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s4">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="aFirst alarmInformation" href="#">报警信息显示</a> 
+			<a class = "orderInformation" href="#">订单信息统计</a> 
+			<a class = "equipmentUtilization" href="#">设备使用率</a> 
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s5">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="userManagement aFirst" href="#">用户管理</a> 
+			<a class = "adduser" href="#">添加用户</a> 
+			<a class = "staffQueries" href="#">职员信息查询</a> 
+			<a class = "addStaff" href="javascript:;">添加职员</a>
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s6">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="aFirst" href="#">查询追溯</a> 
+			<a href="#">视频追溯</a> 
+		</nav>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s7">
+			<h3><img src="images/logo1.jpg" alt=""></h3>
+			<a class="aFirst" href="#">Hbase集群</a> 
+			<a href="#">MySQL集群</a> 
+			<a href="#">Hadoop集群</a> 
+		</nav>
+			
+			<div class="main">
+				<div class="menu">
+					<img src="images/logo3.jpg" alt="logo">
+					<!-- Class "cbp-spmenu-open" gets applied to menu -->
+					<button id="showLeft1">订单管理</button>
+					<button id="showLeft2">物流追踪</button>
+					<button id="showLeft3">生产管理</button>
+					<button id="showLeft4">管理部门</button>
+					<button id="showLeft5">权限管理</button> 
+					<button id="showLeft6">追溯系统</button>
+					<button id="showLeft7">信息中心</button>
+				</div>
+				<div class="login">
+					<img src="images/user.jpg" alt=""><a class="userA" href="">abc</a>
+					<img src="images/logout.jpg" alt=""><a href="">退出</a>
+				</div>
+			</div>
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<iframe src = "initialize/initialize.html" style="margin-top:20px;margin-left: 200px; width: 87%; height: 1000px; border:none;"></iframe>
+		<!--<div id = "realTimeInformation" >-->
+			<!--<ul>-->
+				<!--<li>华西医院提交订单</li>-->
+				<!--<li>华西医院提交订单</li>-->
+				<!--<li>华西医院提交订单</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src = "js/mustache.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script type="text/javascript" src = "js/controller.js"></script>
+		<script src="js/classie.js"></script>
+		<script type="text/javascript" src = "js/indexController.js"></script>
+	</body>
+</html>

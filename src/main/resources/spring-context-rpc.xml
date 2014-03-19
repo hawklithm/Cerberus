@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+
+	<bean id="springMethodInterceptor"
+		class="com.multiagent.hawklithm.rpc.manager.SpringMethodInterceptor" />
+
+	<bean id="proxyRoot" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- <property name="proxyInterfaces" value="com.multiagent.hawklithm.rpc.Interfacetest"/> -->
+		<property name="singleton" value="false" />
+		<property name="interceptorNames">
+			<list>
+				<value>springMethodInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="rpcClient" class="com.multiagent.hawklithm.rpc.net.RPCClient">
+		<constructor-arg index="0">
+			<value>10007</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>127.0.0.1</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="lockManager" class="com.multiagent.hawklithm.rpc.manager.RPCLockManager" />
+
+	<bean class="com.multiagent.hawklithm.rpc.manager.RpcAutoRegister" />
+
+	<bean id="rpcProxyRegManager" class="com.multiagent.hawklithm.rpc.manager.RpcRegManager" />
+
+	<bean id="processorRegister" class="com.multiagent.hawklithm.net.manager.ProcessorRegister"/>
+
+	<bean id="transportManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.transport.interface4rpc.RPCTransportOrderManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="hospitalInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.hospital.interface4rpc.RPCHospitalInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="machineInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.machineInfo.interface4rpc.RPCMachineInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="orderManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.sephiroth.interface4rpc.RPCOrderManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="staffInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.staff.interface4rpc.RPCStaffInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="userInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.user.interface4rpc.RPCUserInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="vehicleInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.vehicle.interface4rpc.RPCVehicleInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+
+	<bean id="processInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.leon.process.interface4rpc.RPCProcessInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+	
+	<bean id="flowRecordManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.leon.interface4rpc.RPCMachineFlowRecordManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+	
+	
+	<bean id="gpsManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.gps.interface4rpc.RPCGpsInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+</beans>

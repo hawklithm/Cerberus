@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cleaningDisinfection</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/ordersPath.css">
+</head>
+<body>
+	<h1>订单路径显示</h1> 
+	<form>
+		<div class = "left">
+			<span>按订单查询</span>
+			<span>按医院查询</span>
+			<span>按车辆查询</span>
+		</div>
+		<div class = "right">
+			<input id="transportOrderNum" type = "text"> 
+			<input id="orderNum" type = "text"> 
+			<input id="vehicleNum" type = "text"> 
+		</div>
+		<button>确定查询</button>
+	</form>
+	<div class = "searchResult">
+	<span>搜索结果</span>
+		<!-- <div class = "geographicInformation">
+		</div> -->	
+		<div id = "container"></div>
+	</div>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3i4qurthIROzAQAHj8qa6kCR"></script>
+	 <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+	<script type="text/javascript" src="../js/orderPath.js"></script>
+	<!--<script type="text/javascript">
+			var map = new BMap.Map("container");          // 创建地图实例  
+			map.centerAndZoom("成都",12);
+			map.enableScrollWheelZoom();
+			map.enableContinuousZoom();
+			// var point = new BMap.Point(103.885483,30.841492);  // 创建点坐标  
+			// map.centerAndZoom(point, 15);
+			map.addControl(new BMap.NavigationControl()); 
+			var polyline = new BMap.Polyline([
+			  new BMap.Point(104.023073,30.673987),
+			  new BMap.Point(104.071174,30.6583),
+			  new BMap.Point(104.108448,30.666533)
+			], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});
+			map.addOverlay(polyline);
+			lbsyun.baidu.com/apiconsole/key
+	</script>-->
+	 <!--<script type="text/javascript">
+	 	var map = new BMap.Map("container");
+		map.centerAndZoom("成都",12);
+		map.enableScrollWheelZoom();
+		map.enableContinuousZoom();
+		map.addControl(new BMap.NavigationControl()); 
+		var beiJing = new BMap.Point(116.603443,40.088108);
+		var xiAn = new BMap.Point(108.766653,34.445703);
+		var chengDu = new BMap.Point(103.965376,30.580799);
+		var start = new BMap.Point(104.106393,30.681601);
+		var end = new BMap.Point(104.081829,30.642242);
+		var curve = new BMapLib.CurveLine([beiJing,xiAn,chengDu], {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5}); //创建弧线对象
+		var driving = new BMap.DrivingRoute(map);
+		map.addOverlay(curve);
+		curve.enableEditing();
+		driving.search(chengDu,start);
+		driving.search(start,end);
+		driving.setSearchCompleteCallback(function() {
+        	var pts = driving.getResults().getPlan(0).getRoute(0).getPath();
+        	var polyline = new BMap.Polyline(pts);     
+        	map.addOverlay(polyline);
+
+        });
+
+        var m1 = new BMap.Marker(start);
+	        var m2 = new BMap.Marker(end);
+	        map.addOverlay(m1);
+	        map.addOverlay(m2);
+	        
+	        var lab1 = new BMap.Label("起点",{position:start});
+	        var lab2 = new BMap.Label("终点",{position:end});  
+
+	        map.addOverlay(lab1);
+	        map.addOverlay(lab2);
+
+	        setTimeout(function() {
+	        	map.setViewport([start,end]);
+	        },1000);
+
+        var headStr = "大概这是标题";
+        var contentStr = "这貌似应该显示车辆信息。。。。。。。。。或者也可以考虑显示其他的东西。。。。。。。。。。。。。。";
+        var sContent = "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+headStr+"</h4>"+
+        "<p style='margin:0;line-height:1.5em;font-size:13px;text-ident:2em'>"+contentStr+"</p>"+"</div>";
+        var opts = {
+        	width: 400,
+        	height: 100,
+        	title: headStr
+        };
+
+        var infoWindow = new BMap.InfoWindow(contentStr,opts);
+	        m1.setAnimation(BMAP_ANIMATION_BOUNCE);
+	        m1.addEventListener("click",function() {
+	        	this.openInfoWindow(infoWindow);
+	        });
+
+	 </script>-->
+</body>
+</html>

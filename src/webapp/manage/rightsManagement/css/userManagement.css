@@ -1,0 +1,44 @@
+.clear {
+  claer: both;
+}
+
+#edit,#init {
+  float: right;
+}
+
+input[type="button"] {
+  width: 84px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+td {
+  text-align:  center;
+}
+
+.userId {
+  width: 15%;
+}
+
+.role {
+  width: 10%;
+}
+
+.username {
+  width: 7%;
+}
+
+.isEmployee {
+  width: 15%;
+}
+
+.hospitalId {
+  width: 15%;
+}
+
+.enable {
+  width: 7%;
+}

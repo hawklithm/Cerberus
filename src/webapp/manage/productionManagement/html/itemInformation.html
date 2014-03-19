@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>orderSentOut</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../../css/base.css">
+	<link rel="stylesheet" type="text/css" href="../css/orderSentOut.css">
+
+</head>
+<body>
+	<h1>器械历史信息</h1>
+	<!-- <section>
+		<input name = "order" id = "no" type = "radio">
+		<label for = "no">器械分拣实时信息</label>
+		<input name = "order" id = "yes" type = "radio">
+		<label for = "yes">器械分拣历史信息</label>
+	</section> -->
+	<form>
+		<label >处理过程</label>
+		<select id = "selectProName">
+			<option data-value="all">所有过程</option>
+			<option data-value="pre">预处理</option>
+			<option data-value="clean">清洗消毒</option>
+			<option data-value="pack">打包</option>
+			<option data-value="reclean">二次消毒</option>
+			<option data-value="store">无菌存放</option>
+		</select>
+		<label >器械编号</label><input id = "itemNum" type = "text">
+		<label >器械类型</label>
+		<select id = "selectItemType">
+			<option data-value="all">所有类型</option>
+			<option data-value="first">第一种</option>
+			<option data-value="second">第二种</option>
+			<option data-value="third">第三种</option>
+		</select>
+		<label>所属时间段</label><input id = "beginTime" type = "date"><span>-</span><input id = "endTime" type = "date">
+		<input type = "submit" value = "查询" readonly = "readonly" class="search">
+	</form>
+	<table>
+		<tr>
+			<th class = "itemId">器械编号</th>
+			<th class = "itemType">器械类型</th>
+			<th class = "processName">处理过程</th>
+			<th class = "staffId">负责人</th>
+			<th class = "realTime">时间</th>
+		</tr>
+	</table>
+	<div class = "page">
+		<a class = "previous" href="javascript:;">上一页</a>
+		<span href="javascript:;">-</span>
+		<a class = "next" href="javascript:;">下一页</a>
+	</div>
+	 
+</body>
+</html>
+<script type="text/javascript" src = "../../js/jquery.min.js"></script>
+<script type = "text/javascript" src = "../../js/mustache.js"></script>
+<script type="text/javascript" src = "../../js/dateController.js"></script>
+<script type="text/javascript" src = "../js/itemInformation.js"></script>
