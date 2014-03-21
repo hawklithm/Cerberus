@@ -3,15 +3,15 @@ package com.multiagent.hawklithm.history.dataobject;
 import java.util.Date;
 
 public class ItemHistoryDO {
-	private Integer id;
-	private Date time;
-	private Date gmtCreate;
-	private Date gmtModified;
-	private Integer itemId;
-	private Integer readerId;
-	private Integer cameraId;
-	private String itemStatus;
-	private Integer equipmentId;
+	protected Integer id;
+	protected Date time;
+	protected Date gmtCreate;
+	protected Date gmtModified;
+	protected Integer itemId;
+	protected Integer readerId;
+	protected Integer cameraId;
+	protected String itemStatus;
+	protected Integer equipmentId;
 	public Date getTime() {
 		return time;
 	}

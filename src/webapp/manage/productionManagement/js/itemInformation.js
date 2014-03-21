@@ -63,7 +63,7 @@ $(function(){
         content.condition = new Object();
         content.condition.operateType = operateType;
         content.condition.tableType = tableType;
-        content.condition.offeset = offset;
+        content.condition.offset = offset;
         content.condition.lengths = length;
         content.rows = [];
         content.rows[0] = itemCondition;
@@ -97,16 +97,17 @@ $(function(){
             "{{#condition}}\
                 <tr>\
                     <td>{{itemId}}</td>\
-                    <td>{{itemType}}</td>\
+                    <td>{{type}}</td>\
                     <td>{{processName}}</td>\
-                    <td>{{staffId}}</td>\
-                    <td>{{realTime}}</td>\
+                    <td>{{staffInfo}}</td>\
+                    <td>{{time}}</td>\
                 </tr>\
                 {{/condition}}";
         var datas = dataObject.rows;
         var table = $("table");
+        table.html(originalTable);
         for (var index in datas){
-            var html = Mustache.render(tpl,datas[index]);
+            var html = Mustache.to_html(tpl, datas[index]);
             table.append(html);
         }
         // table.html(originalTable);

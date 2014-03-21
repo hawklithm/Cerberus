@@ -54,6 +54,9 @@ $(function(){
 	$(".equipmentUtilization").on("click",function(){
 		iframe.attr("src","sectorManagement/html/equipmentUtilization.html");
 	});
+	$(".itemManage").on("click",function() {
+		iframe.attr("src","sectorManagement/html/itemManage.html");
+	});
 	$(".userManagement").on("click",function(){
 		iframe.attr("src","rightsManagement/html/userManagement.html");
 	});

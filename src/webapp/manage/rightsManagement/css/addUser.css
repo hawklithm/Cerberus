@@ -1,12 +1,14 @@
 body form {
-  width: 100%;
+  /*width: 100%;*/
+  width: 800px;
   margin: 0 auto;
 }
 body form div.left {
-  width: 15%;
+  /*width: 15%;*/
   /*margin: 0 auto;*/
 
   float: left;
+  margin-right: 10px;
   /*width: 100;*/
 
   /*margin-top: 20px;*/
@@ -23,25 +25,26 @@ body form div.left span {
   display: block;
   margin: 0 auto;
   margin-top: 15px;
-  text-align: left;
+  text-align: right;
+  width: 90px;
   /*float: left;*/
 
   /*margin-top: 20px;*/
 
 }
 body form div.right {
-  width: 85%;
-  float: right;
+  width: 700px;
+  float: left;
 }
 body form div.right input {
   display: block;
-  width: 100%;
+  width: 696px;
   margin: 0 auto;
   margin-top: 20px;
 }
 body form div.right select {
   display: block;
-  width: 100%;
+  width: 700px;
   margin: 0 auto;
   margin-top: 20px;
   height: 22px;
@@ -59,6 +62,7 @@ body form div.right input[type="button"] {
   color: white;
   font-family: 微软雅黑;
   font-size: 16px;
+  float: left;
 }
 body form div.right input[type="button"]:hover {
   cursor: pointer;

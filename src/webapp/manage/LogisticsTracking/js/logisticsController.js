@@ -53,7 +53,7 @@ $(function () {
         content.condition = new Object();
         content.condition.operateType = operateType;
         content.condition.offset = offset;
-        content.condition.length = length;
+        content.condition.lengths = length;
         content.rows = [];
         content.rows[0] = orderCondition;
         return content;

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="52ea61c6-5ef6-4fa9-b3ef-83ebc6fce9d0" name="Default" comment="" />
+    <list default="true" readonly="true" id="52ea61c6-5ef6-4fa9-b3ef-83ebc6fce9d0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$" afterPath="$PROJECT_DIR$" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js" afterPath="$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage/productionManagement/js/itemInformation.js" afterPath="$PROJECT_DIR$/manage/productionManagement/js/itemInformation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js" afterPath="$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js" />
+    </list>
     <ignored path="webapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,9 +72,40 @@
       <file leaf-file-name="itemInformation.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage/productionManagement/js/itemInformation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="0" selection-start="5443" selection-end="5443" vertical-scroll-proportion="0.60264903" vertical-offset="1659" max-vertical-offset="2565">
+            <state line="99" column="26" selection-start="3618" selection-end="3618" vertical-scroll-proportion="0.66445917" vertical-offset="883" max-vertical-offset="2580">
               <folding>
-                <marker date="1394978214708" expanded="true" signature="3549:3787" placeholder="..." />
+                <marker date="1395307714212" expanded="true" signature="3548:3780" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logisticsController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="32" selection-start="2201" selection-end="2245" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1770">
+              <folding>
+                <marker date="1395301957024" expanded="true" signature="2653:3028" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="equipmentRecycling.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="77" selection-start="553" selection-end="553" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="810">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="equipmentRecyling.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="32" selection-start="1969" selection-end="2013" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="4215">
+              <folding>
+                <marker date="1395301946050" expanded="true" signature="3160:3437" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -78,7 +114,7 @@
       <file leaf-file-name="itemInformation.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manage/productionManagement/html/itemInformation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="27" selection-start="876" selection-end="876" vertical-scroll-proportion="-15.791667" vertical-offset="41" max-vertical-offset="960">
+            <state line="28" column="27" selection-start="876" selection-end="876" vertical-scroll-proportion="-14.791667" vertical-offset="65" max-vertical-offset="960">
               <folding />
             </state>
           </provider>
@@ -101,9 +137,9 @@
         <option value="$PROJECT_DIR$/manage/LogisticsTracking/html/transportOrder.html" />
         <option value="$PROJECT_DIR$/manage/index.html" />
         <option value="$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html" />
+        <option value="$PROJECT_DIR$/manage/js/controller.js" />
         <option value="$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js" />
         <option value="$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js" />
-        <option value="$PROJECT_DIR$/manage/js/controller.js" />
         <option value="$PROJECT_DIR$/manage/productionManagement/js/itemInformation.js" />
       </list>
     </option>
@@ -457,6 +493,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17395833" sideWeight="0.6709265" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -467,7 +504,6 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32961783" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -501,60 +537,46 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/manage/js/dateController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/css/orderQuery.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2685">
-          <folding />
-        </state>
+        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2685" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1320">
-          <folding />
-        </state>
+        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1320" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/css/applyForOrder.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="16" selection-start="2607" selection-end="2607" vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="1770">
-          <folding>
-            <marker date="1391781188000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="2805">
-          <folding />
-        </state>
+        <state line="23" column="33" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="2805" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="88" column="22" selection-start="3140" selection-end="3140" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="4215">
           <folding>
-            <marker date="1394863425036" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1395301946050" expanded="true" signature="3160:3437" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -568,9 +590,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="14" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1530">
-          <folding />
-        </state>
+        <state line="1" column="14" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1530" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html">
@@ -584,7 +604,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="28" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="4215">
           <folding>
-            <marker date="1394863425036" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1395301946050" expanded="true" signature="3160:3437" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -598,23 +618,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/classie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="7" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1035">
-          <folding />
-        </state>
+        <state line="14" column="7" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1035" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/html/transportOrder.html">
@@ -626,9 +640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500">
-          <folding />
-        </state>
+        <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html">
@@ -642,7 +654,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <folding>
-            <marker date="1394863425036" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1395301946050" expanded="true" signature="3160:3437" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -656,38 +668,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/css/orderQuery.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="2685">
-          <folding />
-        </state>
+        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="2685" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1320">
-          <folding />
-        </state>
+        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="1320" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hospital/css/applyForOrder.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="2" selection-start="1652" selection-end="1652" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="975">
-          <folding>
-            <marker date="1391781188000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -739,23 +741,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="55" selection-start="672" selection-end="672" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="1560">
-          <folding />
-        </state>
+        <state line="15" column="55" selection-start="672" selection-end="672" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="1560" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="77" selection-start="553" selection-end="553" vertical-scroll-proportion="0.33216783" vertical-offset="0" max-vertical-offset="858">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -765,30 +756,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/dateController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="895">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="895" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="67" selection-start="935" selection-end="1006" vertical-scroll-proportion="0.1452514" vertical-offset="230" max-vertical-offset="1125">
-          <folding />
-        </state>
+        <state line="24" column="67" selection-start="935" selection-end="1006" vertical-scroll-proportion="0.1452514" vertical-offset="230" max-vertical-offset="1125" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/js/classie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/error.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="882" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/orderDetail.html">
@@ -798,64 +781,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js">
+    <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="33" selection-start="3567" selection-end="3567" vertical-scroll-proportion="0.6125828" vertical-offset="945" max-vertical-offset="4215">
-          <folding>
-            <marker date="1394863425036" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+        <state line="23" column="33" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="2805" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospital/css/applyForOrder.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospital/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.1452514" vertical-offset="425" max-vertical-offset="1320" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospital/css/orderQuery.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/productionManagement/html/itemInformation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="27" selection-start="876" selection-end="876" vertical-scroll-proportion="-14.791667" vertical-offset="65" max-vertical-offset="960">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/index.html">
+    <entry file="file://$PROJECT_DIR$/manage/orderManagement/html/equipmentRecycling.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="2805">
+        <state line="19" column="77" selection-start="553" selection-end="553" vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="810">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage/orderManagement/js/equipmentRecyling.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="32" selection-start="1969" selection-end="2013" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="4215">
+          <folding>
+            <marker date="1395301946050" expanded="true" signature="3160:3437" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/LogisticsTracking/js/logisticsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="16" selection-start="2607" selection-end="2607" vertical-scroll-proportion="0.21653971" vertical-offset="851" max-vertical-offset="1770">
+        <state line="55" column="32" selection-start="2201" selection-end="2245" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1770">
           <folding>
-            <marker date="1391781188000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1395301957024" expanded="true" signature="2653:3028" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospital/css/applyForOrder.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospital/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="36" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.1452514" vertical-offset="425" max-vertical-offset="1320">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hospital/css/orderQuery.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage/productionManagement/html/itemInformation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="27" selection-start="876" selection-end="876" vertical-scroll-proportion="-15.791667" vertical-offset="41" max-vertical-offset="960">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage/productionManagement/js/itemInformation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="0" selection-start="5443" selection-end="5443" vertical-scroll-proportion="0.60264903" vertical-offset="1659" max-vertical-offset="2565">
+        <state line="99" column="26" selection-start="3618" selection-end="3618" vertical-scroll-proportion="0.66445917" vertical-offset="883" max-vertical-offset="2580">
           <folding>
-            <marker date="1394978214708" expanded="true" signature="3549:3787" placeholder="..." />
+            <marker date="1395307714212" expanded="true" signature="3548:3780" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -2,7 +2,7 @@ package com.multiagent.hawklithm.leon.interface4rpc;
 
 import java.util.Date;
 
-import com.multiagent.hawklithm.history.dataobject.ItemHistoryDO;
+import com.multiagent.hawklithm.history.dataobject.ExItemHistoryDO;
 import com.multiagent.hawklithm.history.dataobject.PackageHistoryDO;
 import com.multiagent.hawklithm.leon.DO.SqlEquipCamReaderMappingDO;
 import com.multiagent.hawklithm.leon.DO.SqlReaderAtEquipmentDO;
@@ -25,14 +25,12 @@ public interface RPCMachineFlowRecordManagerInterface {
 
 	SqlEquipCamReaderMappingDO getMappingDataByEquipmentId(int equipmentId);
 
-	ItemHistoryDO[] queryItemHistory(Integer id, Integer itemId, Integer readerId,
-			Integer equipmentId, Date startTime, Date endTime);
+	ExItemHistoryDO[] queryItemHistory(Integer id, Integer itemId, Integer readerId,
+			Integer equipmentId, Date startTime, Date endTime, Integer offset, Integer length);
 
 	PackageHistoryDO[] queryPackageHistory(Integer id, Integer packageId, Integer readerId,
-			Integer equipmentId, Date startTime, Date endTime);
-	
-	
-	
+			Integer equipmentId, Date startTime, Date endTime, Integer offset, Integer length);
+
 
 
 }

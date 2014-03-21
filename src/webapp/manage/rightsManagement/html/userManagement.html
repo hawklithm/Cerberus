@@ -9,8 +9,26 @@
 <body>
 	<h1>用户管理</h1>
 	<section>
-		<input name = "no" id = "no" type = "text">
-		<label for = "no">查询</label>
+		<div>
+			<form>
+				<label >用户ID</label><input id = "userId" type = "text">
+				<label >用户名</label><input id = "userName" type = "text">
+				<label>是否厂内员工</label>
+				<select id = "isEmployee">
+					<option>是</option>
+					<option>否</option>
+				</select>
+				<label >医院ID</label><input id = "hospitalId" type = "text">
+				<label>账号状态</label>
+				<select id = "status">
+					<option>已激活</option>
+					<option>未激活</option>
+				</select>
+				<input type = "submit" value = "查询" readonly = "readonly">
+			</form>
+		<!-- 	<input name = "no" id = "no" type = "text">
+			<label for = "no">查询</label> -->
+		</div>
 		<div id="init">
 			<input name = "yes" id = "yes" type = "button" value = "编辑">
 		</div>
@@ -35,72 +53,6 @@
 			<th class = "enable">账户状态</th>
 			<th class = "createdTime">创建时间</th>
 			<th class = "modifiedTime">上次修改时间</th>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>等级一</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>最高权限</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>最高权限</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>最高权限</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>最高权限</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td>2011060040020</td>
-			<td>最高权限</td>
-			<td>gxkl</td>
-			<td>是</td>
-			<td>123456</td>
-			<td>已激活</td>
-			<td>2013-2-30</td>
-			<td>2013-1-30</td>
 		</tr>
 	</table>
 	</form>

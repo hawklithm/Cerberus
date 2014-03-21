@@ -85,3 +85,7 @@ input.search {
   border: none;
   cursor: pointer;
 }
+
+.clear {
+  clear: both;
+}

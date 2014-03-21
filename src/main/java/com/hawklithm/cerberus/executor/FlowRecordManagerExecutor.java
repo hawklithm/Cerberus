@@ -14,7 +14,7 @@ import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
 import com.hawklithm.cerberus.protocol.ProtocolUtils;
-import com.hawklithm.cerberus.servlet.MessageTranslateServlet;
+import com.multiagent.hawklithm.history.dataobject.ExItemHistoryDO;
 import com.multiagent.hawklithm.history.dataobject.ItemHistoryDO;
 import com.multiagent.hawklithm.history.dataobject.PackageHistoryDO;
 import com.multiagent.hawklithm.leon.interface4rpc.RPCMachineFlowRecordManagerInterface;
@@ -61,13 +61,13 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 //			for (SqlReaderAtEquipmentDO index : infos) {
 //				result.getRows().add(getFrontEndingRequest(index).toMapping());
 //			}
-			ItemHistoryDO[] itemInfos=flowRecordManager.queryItemHistory(msg.getRecordId(), msg.getObjectId(), msg.getReaderId(), msg.getEquipmentId(), msg.getStartTime(), msg.getEndTime());
+			ExItemHistoryDO[] itemInfos=flowRecordManager.queryItemHistory(msg.getRecordId(), msg.getObjectId(), msg.getReaderId(), msg.getEquipmentId(), msg.getStartTime(), msg.getEndTime(),message.getOffset(),message.getLength());
 			System.out.println("查询包器械数据："+gson.toJson(itemInfos));
-			for (ItemHistoryDO index:itemInfos){
+			for (ExItemHistoryDO index:itemInfos){
 				result.getRows().add(getFrontEndingRequest(index).toMapping());
 			}
 		}else if (FlowRecordDO.isPackage(message.getTableName())){
-			PackageHistoryDO[] packageInfos=flowRecordManager.queryPackageHistory(msg.getRecordId(), msg.getObjectId(), msg.getReaderId(), msg.getEquipmentId(), msg.getStartTime(), msg.getEndTime());
+			PackageHistoryDO[] packageInfos=flowRecordManager.queryPackageHistory(msg.getRecordId(), msg.getObjectId(), msg.getReaderId(), msg.getEquipmentId(), msg.getStartTime(), msg.getEndTime(),message.getOffset(),message.getLength());
 			for (PackageHistoryDO index:packageInfos){
 				result.getRows().add(getFrontEndingRequest(index).toMapping());
 			}
@@ -108,6 +108,8 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 			ProtocolUtils.notNullSet(condition.getCondition(), "itemStatus", ProtocolUtils.GetProperty(info, "itemStatus"));
 			ProtocolUtils.notNullSet(condition.getCondition(), "packageStatus", ProtocolUtils.GetProperty(info, "packageStatus"));
 			ProtocolUtils.notNullSet(condition.getCondition(), "equipmentId", ProtocolUtils.GetProperty(info, "equipmentId"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "processName", ProtocolUtils.GetProperty(info, "processName"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "staffInfo", ProtocolUtils.GetProperty(info, "staffInfo"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

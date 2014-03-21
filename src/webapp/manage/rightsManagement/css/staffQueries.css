@@ -5,6 +5,12 @@ input[type="button"] {
   border: none;
   border-radius: 5px;
 }
+td {
+  text-align: center;
+}
+.check {
+  width: 5%;
+}
 .first {
   width: 10%;
 }

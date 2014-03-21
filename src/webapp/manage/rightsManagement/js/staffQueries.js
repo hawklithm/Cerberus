@@ -1,9 +1,6 @@
 var tdValue = [], table2post = [];
 var table, delId = [];
 var thName = ["check","userId","role","username","isEmployee","hospitalId","enable"];
-var yesNo = ["是","否"];
-var states = ["未激活","已激活"];
-var rights = ["所有权限","最高权限","等级一","等级二","等级三","等级四","等级五"];
 
 var count = 0;
 var defaultLengthPerPage=15;

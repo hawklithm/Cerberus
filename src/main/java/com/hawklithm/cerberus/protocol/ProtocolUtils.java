@@ -61,7 +61,7 @@ public class ProtocolUtils {
 			return (T)method.invoke(object);
 //			return (T)field.get(object);
 		}catch(IllegalAccessException| IllegalArgumentException| InvocationTargetException|NoSuchMethodException  e){
-			System.out.println("can't get property ["+propertyName+"] from class ["+clazz.getName()+"]");
+//			System.out.println("can't get property ["+propertyName+"] from class ["+clazz.getName()+"]");
 			return null;
 //			throw new Exception("can't get property ["+propertyName+"] from class ["+clazz.getName()+"]");
 		}
