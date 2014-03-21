@@ -1,9 +1,15 @@
-.first {
-  width: 20%;
+.id {
+	width: 10%;
 }
-.second {
-  width: 60%;
+
+.content {
+	width: 80%;
 }
-.third {
-  width: 20%;
+
+.time {
+	width: 10%;
+}
+
+#yes {
+	width: 30%;
 }
