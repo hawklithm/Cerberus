@@ -5,7 +5,7 @@ import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerProperty
 public class ProcessInfoDO {
 	private String processName;
 	private Integer id;
-	private ChangerAnnouncerPropertyArrayVersion[][] retValue;
+	private ChangerAnnouncerPropertyArrayVersion[] retValue;
 //	private String[] retValue;
 	public String getProcessName() {
 		return processName;
@@ -19,10 +19,10 @@ public class ProcessInfoDO {
 	public void setId(Integer  id) {
 		this.id = id;
 	}
-	public ChangerAnnouncerPropertyArrayVersion[][] getRetValue() {
+	public ChangerAnnouncerPropertyArrayVersion[] getRetValue() {
 		return retValue;
 	}
-	public void setRetValue(ChangerAnnouncerPropertyArrayVersion[][] retValue) {
+	public void setRetValue(ChangerAnnouncerPropertyArrayVersion[] retValue) {
 		this.retValue = retValue;
 	}
 }

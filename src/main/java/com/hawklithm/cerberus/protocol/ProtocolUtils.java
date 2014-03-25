@@ -49,6 +49,28 @@ public class ProtocolUtils {
 			map.put(attribute, trans.get(object));
 		}
 	}
+	
+	static public void assignPropertyFromMap(Map<String, Object> map,Object object) throws Exception{
+		Class<?> clazz =object.getClass();
+//		Field[] fields= clazz.getFields();
+		Method[] methods=clazz.getMethods();
+		
+//		for (Field index:fields){
+//			String property=index.getName();
+//			String methodName="set"+Character.toUpperCase(property.charAt(0))+property.substring(1);
+//			Method method=clazz.getMethod(methodName);
+//		}
+		for (Method method:methods){
+			String methodName=method.getName();
+			if (methodName.matches("set[a-zA-Z]+")){
+				String propertyName=Character.toLowerCase(methodName.charAt(3))+methodName.substring(4);
+				if (map.containsKey(propertyName)){
+					method.invoke(object,map.get(propertyName));
+				}
+			}
+		}
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	static public <T> T GetProperty(Object object,String propertyName) throws Exception{

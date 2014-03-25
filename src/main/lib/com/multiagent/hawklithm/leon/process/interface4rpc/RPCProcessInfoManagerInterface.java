@@ -15,6 +15,6 @@ public interface RPCProcessInfoManagerInterface {
 	 * @return
 	 * @throws ModuleNotFoundException 
 	 */
-	ChangerAnnouncerPropertyArrayVersion[][] getBufferedPropertyList(String processName) throws ModuleNotFoundException;
+	ChangerAnnouncerPropertyArrayVersion[] getBufferedPropertyList(String processName) throws ModuleNotFoundException;
 
 }
