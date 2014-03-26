@@ -2,6 +2,7 @@ package com.hawklithm.cerberus.appService;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -121,10 +122,16 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 							System.out.println("获取机器buffer数据");
 							System.out.println("查询条件: " + gson.toJson(message));
 							result = executor.execute(message);
+//							boolean nothingChange=false;
+//							List<Map<String,Object>>list=result.getRows();
+//							for (Map<String, Object> index:list){
+//								Map<String, Object>condition=(Map<String, Object>)index.get("condition");
+//								List<>condition.get("retValue");
+//							}
+							sendMessage(channel, result);
 						} catch (ServletException | IOException e1) {
 							e1.printStackTrace();
 						}
-						sendMessage(channel, result);
 						
 //					}
 				}
