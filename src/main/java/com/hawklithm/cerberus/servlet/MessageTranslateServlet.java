@@ -53,7 +53,7 @@ public class MessageTranslateServlet extends AbstractAuthenticateProcessingServl
 		FrontEndingCommunicationProtocol<Map<String,Object>> result =executor.execute(message);
 		response.setContentType("application/json");
 		mapper.writeValue(response.getOutputStream(), gson.toJson(result));
-		}catch(UnrecognizedPropertyException e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}

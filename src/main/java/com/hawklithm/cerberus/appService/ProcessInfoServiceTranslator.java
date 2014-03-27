@@ -2,7 +2,6 @@ package com.hawklithm.cerberus.appService;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import org.jboss.netty.util.internal.ConcurrentHashMap;
 import org.springframework.util.Assert;
 
 import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
+import com.multiagent.hawklithm.exception.NothingChangeAndDoNotNeedToExecuteException;
 import com.multiagent.hawklithm.net.handler.AppServiceNettyHandler;
 
 public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*implements Switchable*/ {
@@ -129,8 +129,12 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 //								List<>condition.get("retValue");
 //							}
 							sendMessage(channel, result);
-						} catch (ServletException | IOException e1) {
-							e1.printStackTrace();
+						} catch (Exception e){
+							if (e instanceof ServletException || e instanceof IOException){
+								e.printStackTrace();
+							}else if (e instanceof NothingChangeAndDoNotNeedToExecuteException){
+								
+							}
 						}
 						
 //					}

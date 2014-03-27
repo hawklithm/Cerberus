@@ -1,9 +1,8 @@
 package com.hawklithm.cerberus.executor;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-
-import javax.servlet.ServletException;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -11,6 +10,8 @@ import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
 import com.hawklithm.cerberus.protocol.ProtocolUtils;
+import com.multiagent.hawklithm.exception.NothingChangeAndDoNotNeedToExecuteException;
+import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerPropertyArrayVersion;
 import com.multiagent.hawklithm.leon.process.dataobject.ProcessInfoDO;
 import com.multiagent.hawklithm.leon.process.interface4rpc.RPCProcessInfoManagerInterface;
 
@@ -20,7 +21,7 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 
 	@Override
 	public FrontEndingCommunicationProtocol<Map<String,Object>> execute(FrontEndingCommunicationProtocol<Map<String,Object>> message )
-			throws ServletException, IOException {
+			throws Exception {
 		FrontEndingCommunicationProtocol<Map<String,Object>> result = new FrontEndingCommunicationProtocol<Map<String,Object>>();
 		try {
 			 if (message.getOperateType().equals(OperateTypeConstant.OPERATE_QUERY)) {
@@ -28,6 +29,9 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 				result.setStatusOk();
 			}
 		} catch (Exception e) {
+			if (e instanceof NothingChangeAndDoNotNeedToExecuteException){
+				throw e;
+			}
 			e.printStackTrace();
 		}
 		return result;
@@ -43,7 +47,16 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			ProcessInfoDO msg = getQueryCondition(front.getCondition());
 			if (StringUtils.isEmpty(msg.getProcessName())) continue;
 			ProcessInfoDO ans=new  ProcessInfoDO();
-			ans.setRetValue(processInfoManager.getBufferedPropertyList(msg.getProcessName()));
+			ChangerAnnouncerPropertyArrayVersion[] retValue=processInfoManager.getBufferedPropertyList(msg.getProcessName());
+			List<ChangerAnnouncerPropertyArrayVersion> checked=new ArrayList<ChangerAnnouncerPropertyArrayVersion>(retValue.length);
+			for (int i=0;i<retValue.length;i++){
+				if (!retValue[i].isDataNull())
+				checked.add(retValue[i]);
+			}
+			if (checked.size()==0){
+				throw new NothingChangeAndDoNotNeedToExecuteException("nothing change!");
+			}
+			ans.setRetValue(checked.toArray(new ChangerAnnouncerPropertyArrayVersion[checked.size()]));
 			ans.setProcessName(msg.getProcessName());
 //			if (msg.getId()!=null&&msg.getId().intValue()!=0){
 //				ans.setRetValue(new String[]{processInfoManager.getEquipmentInfoById(msg.getProcessName(), msg.getId().intValue())});
@@ -53,6 +66,7 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			result.getRows().add(getFrontEndingRequest(ans).toMapping());
 		}
 	}
+	
 	
 	private ProcessInfoDO getQueryCondition(Map<String, Object> map) {
 		ProcessInfoDO data = new ProcessInfoDO();

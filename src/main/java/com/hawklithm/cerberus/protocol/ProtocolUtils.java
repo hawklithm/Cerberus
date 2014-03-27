@@ -20,7 +20,7 @@ public class ProtocolUtils {
 
 	static public <T, V> V notNullGet(Map<T, V> map, T attribute, Class clazz) {
 		if (map == null) {
-			System.out.println("map is null");
+//			System.out.println("map is null");
 			return null;
 		}
 		if (map.containsKey(attribute)) {

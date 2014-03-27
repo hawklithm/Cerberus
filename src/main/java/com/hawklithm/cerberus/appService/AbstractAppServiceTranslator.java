@@ -6,7 +6,7 @@ import com.hawklithm.cerberus.responsor.AppServiceResponsor;
 public abstract class AbstractAppServiceTranslator implements AppServiceHandler {
 	protected AppServiceResponsor responsor;
 	@Override
-	public void doExcute(AppServiceRequest request, AppServiceResponse response) {
+	public void doExcute(AppServiceRequest request, AppServiceResponse response){
 		response.setResponsor(responsor);
 		execute(request, response);
 	}

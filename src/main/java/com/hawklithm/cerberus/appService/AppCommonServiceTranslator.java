@@ -1,9 +1,6 @@
 package com.hawklithm.cerberus.appService;
 
-import java.io.IOException;
 import java.util.Map;
-
-import javax.servlet.ServletException;
 
 import com.google.gson.Gson;
 import com.hawklithm.cerberus.executor.FrontEndingCommunicationExecutor;
@@ -41,7 +38,7 @@ public class AppCommonServiceTranslator extends AbstractAppServiceTranslator{
 			FrontEndingCommunicationProtocol<Map<String,Object>> result;
 			result = executor.execute(message);
 			response.write(gson.toJson(result));
-		} catch (ServletException | IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

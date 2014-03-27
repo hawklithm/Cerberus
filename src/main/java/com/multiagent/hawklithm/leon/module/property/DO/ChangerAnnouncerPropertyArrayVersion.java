@@ -11,7 +11,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 	private ItemInfoDO[] itemAdd;
 	private ItemInfoDO[] itemRemove;
 	private Integer[] packageAdd;
-	private Integer[] packageRmove;
+	private Integer[] packageRemove;
 	protected Integer machineRFID;
 //	protected Integer[] itemRFIDs;
 //	protected Integer[] packageRFIDs;
@@ -22,7 +22,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 		itemAdd = property.getItemAdd().toArray(new ItemInfoDO[property.getItemAdd().size()]);
 		itemRemove = property.getItemRemove().toArray(new ItemInfoDO[property.getItemRemove().size()]);
 		packageAdd = property.getPackageAdd().toArray(new Integer[property.getPackageAdd().size()]);
-		packageRmove = property.getPackageRmove().toArray(
+		packageRemove = property.getPackageRmove().toArray(
 				new Integer[property.getPackageRmove().size()]);
 		machineRFID=property.getMachineRFID();
 		staffRFID=property.getStaffRFID();
@@ -47,7 +47,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 		ret.setItemRemove(itemRemove);
 		CollectionUtils.addAll(packageAdd, this.packageAdd);
 		ret.setPackageAdd(packageAdd);
-		CollectionUtils.addAll(packageRmove, this.packageRmove);
+		CollectionUtils.addAll(packageRmove, this.packageRemove);
 		ret.setPackageRmove(packageRmove);
 //		CollectionUtils.addAll(itemRFIDs, this.itemRFIDs);
 //		ret.setItemRFIDs(itemRFIDs);
@@ -59,5 +59,21 @@ public class ChangerAnnouncerPropertyArrayVersion {
 //		ret.setCubage(cubage);
 		
 		return ret;
+	}
+	
+	public boolean isDataNull(){
+		if (itemAdd!=null&&itemAdd.length!=0){
+			return false;
+		}
+		if (itemRemove!=null&&itemRemove.length!=0){
+			return false;
+		}
+		if (packageAdd!=null&&packageAdd.length!=0){
+			return false;
+		}
+		if (packageRemove!=null&&packageRemove.length!=0){
+			return false;
+		}
+		return true;
 	}
 }
