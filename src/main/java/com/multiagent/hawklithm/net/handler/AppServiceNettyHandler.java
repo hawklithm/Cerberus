@@ -26,6 +26,9 @@ public class AppServiceNettyHandler extends NettyHandler {
 		this.processorRegister = processorRegister;
 	}
 	private static String TARGET_URL="targetUrl",STATUS="status",CONTENT="content",AUTHENTICATE="authenticate",RESPONSE="response";
+	public static void setTargetUrl(Map<String, String> map,String targetUrl){
+		map.put(TARGET_URL, targetUrl);
+	}
 	public static String getTargetUrl(Map<String,String> map) {
 		return map.get(TARGET_URL);
 	}

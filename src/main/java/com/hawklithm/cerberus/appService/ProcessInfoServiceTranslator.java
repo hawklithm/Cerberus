@@ -42,51 +42,6 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 		
 	});
 
-	// private SwitcherController controller = new SwitcherController(this) {
-	//
-	// @Override
-	// public void run() {
-	// Assert.notNull(channel);
-	// System.out.print(".");
-	// System.out.println("loop address: "+channel.getRemoteAddress().toString());
-	// flag=true;
-	// FrontEndingCommunicationProtocol<Map<String, Object>> message =
-	// gson.fromJson(
-	// request.getContent(), FrontEndingCommunicationProtocol.class);
-	// FrontEndingCommunicationProtocol<Map<String, Object>> result = null ;
-	// while (channel.isConnected()) {
-	// try {
-	// System.out.println("获取机器buffer数据");
-	// System.out.println("查询条件: "+gson.toJson(message));
-	// result = executor.execute(message);
-	// } catch (ServletException | IOException e1) {
-	// e1.printStackTrace();
-	// }
-	// sendMessage(channel, result);
-	// try {
-	// Thread.sleep(3000);
-	// } catch (InterruptedException e) {
-	// e.printStackTrace();
-	// }
-	// }
-	// }
-	// public void sendMessage(Channel channel,
-	// FrontEndingCommunicationProtocol<Map<String, Object>> protocol) {
-	// if (protocol==null) return;
-	// Map<String,String> retMap=new HashMap<String,String>();
-	// AppServiceNettyHandler.setStatus(retMap,"connected"/*response.getStatus()*/);
-	// AppServiceNettyHandler.setAuthenticate(retMap,response.getAuthenticate());
-	// // AppServiceNettyHandler.setContent(retMap, gson.toJson(protocol));
-	// AppServiceNettyHandler.setResponse(retMap, gson.toJson(protocol));
-	// String message=gson.toJson(retMap);
-	// System.out.println("send message to controll center: "+message);
-	// byte[] messageBytes = message.getBytes();
-	// ChannelBuffer buffer = ChannelBuffers.buffer(messageBytes.length);
-	// buffer.writeBytes(messageBytes);
-	// channel.write(buffer);
-	// }
-	//
-	// };
 
 	public void init(){
 		System.out.println("线程开启");
@@ -148,6 +103,7 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 					AppServiceNettyHandler.setStatus(retMap, "connected"/*response.getStatus()*/);
 					AppServiceNettyHandler.setAuthenticate(retMap, response.getAuthenticate());
 					AppServiceNettyHandler.setResponse(retMap, gson.toJson(protocol));
+					AppServiceNettyHandler.setTargetUrl(retMap, "/ProcessInfoManager");
 					String message = gson.toJson(retMap);
 					System.out.println("send message to controll center: " + message);
 					byte[] messageBytes = message.getBytes();
