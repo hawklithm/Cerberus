@@ -1,6 +1,7 @@
 package com.multiagent.hawklithm.leon.module.property.DO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -16,6 +17,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 //	protected Integer[] itemRFIDs;
 //	protected Integer[] packageRFIDs;
 	protected Integer staffRFID;
+	protected Date timeStamp;
 //	protected Integer cubage;
 
 	public ChangerAnnouncerPropertyArrayVersion(ChangerAnnouncerProperty property) {
@@ -75,5 +77,13 @@ public class ChangerAnnouncerPropertyArrayVersion {
 			return false;
 		}
 		return true;
+	}
+
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 }

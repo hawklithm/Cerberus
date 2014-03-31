@@ -132,4 +132,9 @@
 	<bean id="processInfoManagerExecutor" class="com.hawklithm.cerberus.executor.ProcessInfoManagerExecutor">
 		<property name="processInfoManager" ref="processInfoManager"/>
 	</bean>
+	
+	<!-- 实时通知信息交互 -->
+	<bean id="simpleInfoManagerExecutor" class="com.hawklithm.cerberus.executor.SimpleInfoManagerExecutor">
+		<property name="announcementManager" ref="announcementManager"/>
+	</bean>
 </beans>

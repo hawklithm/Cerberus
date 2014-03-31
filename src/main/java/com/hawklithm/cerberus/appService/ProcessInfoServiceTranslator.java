@@ -65,34 +65,25 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 				@Override
 				public void run() {
 					Assert.notNull(channel);
-//					System.out.print(".");
+					// System.out.print(".");
 					System.out.println("loop address: " + channel.getRemoteAddress().toString());
-//					flag = true;
 					FrontEndingCommunicationProtocol<Map<String, Object>> message = gson.fromJson(
 							request.getContent(), FrontEndingCommunicationProtocol.class);
 					FrontEndingCommunicationProtocol<Map<String, Object>> result = null;
-					
-//					while (channel.isConnected()) {
-						try {
-							System.out.println("获取机器buffer数据");
-							System.out.println("查询条件: " + gson.toJson(message));
-							result = executor.execute(message);
-//							boolean nothingChange=false;
-//							List<Map<String,Object>>list=result.getRows();
-//							for (Map<String, Object> index:list){
-//								Map<String, Object>condition=(Map<String, Object>)index.get("condition");
-//								List<>condition.get("retValue");
-//							}
-							sendMessage(channel, result);
-						} catch (Exception e){
-							if (e instanceof ServletException || e instanceof IOException){
-								e.printStackTrace();
-							}else if (e instanceof NothingChangeAndDoNotNeedToExecuteException){
-								
-							}
+
+					try {
+						System.out.println("获取机器buffer数据");
+						System.out.println("查询条件: " + gson.toJson(message));
+						result = executor.execute(message);
+						sendMessage(channel, result);
+					} catch (Exception e) {
+						if (e instanceof ServletException || e instanceof IOException) {
+							e.printStackTrace();
+						} else if (e instanceof NothingChangeAndDoNotNeedToExecuteException) {
+
 						}
-						
-//					}
+					}
+
 				}
 
 				public void sendMessage(Channel channel,
@@ -126,27 +117,6 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator /*i
 		response.setStatus("ok");
 	}
 
-//	@Override
-//	public void enable(Object... object) {
-//		if (thread == null) {
-//			thread = new Thread(runnable);
-//			thread.start();
-//			System.out.println("线程开启");
-//		} else if (!flag) {
-//			thread.resume();
-//			flag = true;
-//		}
-//	}
-//
-//	@Override
-//	public void disable(Object... object) {
-//		if (thread != null) {
-//			if (flag) {
-//				thread.suspend();
-//				flag = false;
-//			}
-//		}
-//	}
 
 	public AppServiceRequest getRequest() {
 		return request;

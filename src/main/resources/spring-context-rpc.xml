@@ -98,4 +98,11 @@
 			value="com.multiagent.hawklithm.gps.interface4rpc.RPCGpsInfoManagerInterface" />
 		<property name="version" value="1.0.0.hawky" />
 	</bean>
+	
+	<bean id="announcementManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.shadowsong.manager.interface4rpc.RPCAnnouncementManager" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+	
 </beans>

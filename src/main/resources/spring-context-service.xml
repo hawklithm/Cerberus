@@ -64,4 +64,10 @@
 		<property name="executor" ref="processInfoManagerExecutor" />
 		<property name="targetUrl" value="/ProcessInfoManager" />
 	</bean>
+	<bean id="announcementInfoAppService"
+		class="com.hawklithm.cerberus.appService.WarningInfoServiceTranslator" init-method="init">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="simpleInfoManagerExecutor" />
+		<property name="targetUrl" value="/Announcement" />
+	</bean>
 </beans>
