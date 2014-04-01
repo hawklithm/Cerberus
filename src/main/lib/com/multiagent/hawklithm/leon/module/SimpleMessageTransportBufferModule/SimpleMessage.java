@@ -3,7 +3,7 @@ package com.multiagent.hawklithm.leon.module.SimpleMessageTransportBufferModule;
 import java.util.Date;
 
 public class SimpleMessage {
-	private Date time;
+	private Date timeStamp;
 	private String message;
 
 	public SimpleMessage() {
@@ -11,17 +11,11 @@ public class SimpleMessage {
 	}
 
 	public SimpleMessage(Date time, String message) {
-		this.time = time;
+		this.timeStamp=time;
 		this.message = message;
 	}
 
-	public Date getTime() {
-		return time;
-	}
 
-	public void setTime(Date time) {
-		this.time = time;
-	}
 
 	public String getMessage() {
 		return message;
@@ -29,5 +23,13 @@ public class SimpleMessage {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 }
