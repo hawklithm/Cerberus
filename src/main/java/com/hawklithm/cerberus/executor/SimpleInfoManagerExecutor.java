@@ -39,7 +39,10 @@ public class SimpleInfoManagerExecutor implements FrontEndingCommunicationExecut
 	}
 	protected void announce(FrontEndingCommunicationProtocol<Map<String,Object>> message,
 			FrontEndingCommunicationProtocol<Map<String,Object>> result){
-		
+		for (Map<String, Object> index:message.getRows()){
+			FrontEndingRequestCondition front=new FrontEndingRequestCondition(index);
+			String announceMessage=(String)ProtocolUtils.notNullGet(front.getCondition(), "message");
+		}
 	}
 
 	protected void query(FrontEndingCommunicationProtocol<Map<String,Object>> message,
