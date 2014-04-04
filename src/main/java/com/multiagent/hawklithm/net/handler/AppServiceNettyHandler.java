@@ -25,7 +25,16 @@ public class AppServiceNettyHandler extends NettyHandler {
 	public void setProcessorRegister(ProcessorRegister processorRegister) {
 		this.processorRegister = processorRegister;
 	}
-	private static String TARGET_URL="targetUrl",STATUS="status",CONTENT="content",AUTHENTICATE="authenticate",RESPONSE="response";
+	private static String TARGET_URL="targetUrl",STATUS="status",CONTENT="content",AUTHENTICATE="authenticate",RESPONSE="response",KEEP_ALIVE="keepAlive";
+	private static String KEEP_ALIVE_TRUE="keep_alive_true";
+	
+	public static void setKeepAlive(Map<String, String> map,String state){
+		map.put(KEEP_ALIVE, state);
+	}
+	public static String getKeepAlive(Map<String, String> map){
+		return map.get(KEEP_ALIVE);
+	}
+	
 	public static void setTargetUrl(Map<String, String> map,String targetUrl){
 		map.put(TARGET_URL, targetUrl);
 	}
@@ -65,6 +74,7 @@ public class AppServiceNettyHandler extends NettyHandler {
 		AppServiceRequest request=new AppServiceRequest();
 		request.setAuthenticate(getAuthenticate(infoMap));
 		request.setChannel(channel);
+		request.setKeepAlive(getKeepAlive(infoMap).equals(KEEP_ALIVE_TRUE));
 		System.out.println("address: "+channel.getRemoteAddress().toString());
 		request.setContent(getContent(infoMap));
 		AppServiceResponse response=new AppServiceResponse();

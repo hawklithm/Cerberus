@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.hawklithm.cerberus.protocol.AnnouncementOperateConstant;
 import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
@@ -25,6 +26,8 @@ public class SimpleInfoManagerExecutor implements FrontEndingCommunicationExecut
 			 if (message.getOperateType().equals(OperateTypeConstant.OPERATE_QUERY)) {
 				query(message, result);
 				result.setStatusOk();
+			}if (message.getOperateType().equals(AnnouncementOperateConstant.OPERATE_ANNOUNCE)){
+				
 			}
 		} catch (Exception e) {
 			if (e instanceof NothingChangeAndDoNotNeedToExecuteException){
@@ -33,6 +36,10 @@ public class SimpleInfoManagerExecutor implements FrontEndingCommunicationExecut
 			e.printStackTrace();
 		}
 		return result;
+	}
+	protected void announce(FrontEndingCommunicationProtocol<Map<String,Object>> message,
+			FrontEndingCommunicationProtocol<Map<String,Object>> result){
+		
 	}
 
 	protected void query(FrontEndingCommunicationProtocol<Map<String,Object>> message,

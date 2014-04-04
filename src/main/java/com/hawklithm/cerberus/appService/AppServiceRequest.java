@@ -6,6 +6,7 @@ public class AppServiceRequest {
 	private String content;
 	private String authenticate;
 	private Channel channel;
+	private boolean keepAlive;
 	public String getContent() {
 		return content;
 	}
@@ -23,5 +24,11 @@ public class AppServiceRequest {
 	}
 	public void setChannel(Channel channel) {
 		this.channel = channel;
+	}
+	public boolean isKeepAlive() {
+		return keepAlive;
+	}
+	public void setKeepAlive(boolean keepAlive) {
+		this.keepAlive = keepAlive;
 	}
 }

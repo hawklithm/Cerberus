@@ -1,23 +1,56 @@
 
 package org.hawklithm.BlueHawky.utils;
 
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import org.jboss.netty.channel.Channel;
 
 import com.hawklithm.cerberus.appService.AppServiceRequest;
 import com.hawklithm.cerberus.appService.AppServiceResponse;
+import com.hawklithm.utils.Pair;
 
 public abstract class SwitcherController{
 	protected Switcher switcher;
 	protected Channel channel;
-	protected AppServiceRequest request;
-	protected AppServiceResponse response;
+	protected AppServiceRequest keepAliveRequest;
+	protected AppServiceResponse keepAliveResponse;
+//	protected Queue<AppServiceRequest> request=new LinkedList<AppServiceRequest>();
+//	protected Queue<AppServiceResponse>response=new LinkedList<AppServiceResponse>();
+	protected Queue<Pair<AppServiceRequest, AppServiceResponse>> request=new ConcurrentLinkedQueue<Pair<AppServiceRequest, AppServiceResponse>>();
 	protected String name;
+	
+//	public class ServicePair{
+//		public  AppServiceRequest keepAliveRequest;
+//		public AppServiceResponse keepAliveResponse;
+//		public ServicePair(AppServiceRequest keepAliveRequest, AppServiceResponse keepAliveResponse) {
+//			this.keepAliveRequest=keepAliveRequest;
+//			this.keepAliveResponse=keepAliveResponse;
+//		}
+//	}
+	
 	public SwitcherController(/*Switchable target,*/String name){
 //		switcher=new Switcher(target);
 		this.name=name;
 	}
 	
 	abstract public void run();
+	
+	public void addOneTimeRequest(Pair<AppServiceRequest, AppServiceResponse> request){
+		this.request.offer(request);
+	}
+//	public void addOneTimeResponse(AppServiceResponse response){
+//		this.response.offer(response);
+//	}
+	public boolean isOneTimeRequestEmpty(){
+		return request.isEmpty();
+	}
+	public Pair<AppServiceRequest, AppServiceResponse> getOneTimeRequest(){
+		return request.poll();
+	}
+//	public AppServiceResponse getOneTimeResponse(){
+//		return response.poll();
+//	}
 	
 	public Switcher getSwitcher() {
 		return switcher;
@@ -31,23 +64,31 @@ public abstract class SwitcherController{
 	public void setChannel(Channel channel) {
 		this.channel = channel;
 	}
-	public AppServiceRequest getRequest() {
-		return request;
+
+
+	public String getName() {
+		return name;
 	}
-	public void setRequest(AppServiceRequest request) {
-//		switcher.disable();
-		this.request = request;
-		setChannel(request.getChannel());
-//		if (this.channel!=null){
-//			channel.close();
-//		}
-//		this.channel=request.getChannel();
-//		switcher.enable();
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public AppServiceResponse getResponse() {
-		return response;
+
+	public AppServiceRequest getKeepAliveRequest() {
+		return keepAliveRequest;
 	}
-	public void setResponse(AppServiceResponse response) {
-		this.response = response;
+
+	public void setKeepAliveRequest(AppServiceRequest keepAliveRequest) {
+		this.keepAliveRequest = keepAliveRequest;
+		setChannel(keepAliveRequest.getChannel());
 	}
+
+	public AppServiceResponse getKeepAliveResponse() {
+		return keepAliveResponse;
+	}
+
+	public void setKeepAliveResponse(AppServiceResponse keepAliveResponse) {
+		this.keepAliveResponse = keepAliveResponse;
+	}
+	
 }
