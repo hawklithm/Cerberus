@@ -3,6 +3,7 @@ package com.multiagent.hawklithm.net.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
@@ -32,7 +33,11 @@ public class AppServiceNettyHandler extends NettyHandler {
 		map.put(KEEP_ALIVE, state);
 	}
 	public static String getKeepAlive(Map<String, String> map){
+		if (map.containsKey(KEEP_ALIVE)){
 		return map.get(KEEP_ALIVE);
+		}else {
+			return "null string";
+		}
 	}
 	
 	public static void setTargetUrl(Map<String, String> map,String targetUrl){

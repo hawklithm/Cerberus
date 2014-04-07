@@ -118,6 +118,9 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			ProcessInfoManagerExecutor.setProcessName(msg.getProcessName(),ans);
 			result.getRows().add(getFrontEndingRequest(ans).toMapping());
 		}
+		if (result.getRows().size()==0){
+			throw new NothingChangeAndDoNotNeedToExecuteException("nothing change!");
+		}
 	}
 	
 	

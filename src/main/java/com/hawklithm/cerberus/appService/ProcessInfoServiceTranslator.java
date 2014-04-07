@@ -1,9 +1,7 @@
 package com.hawklithm.cerberus.appService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -31,7 +29,7 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator  {
 		@Override
 		public void run() {
 			while (true) {
-				while(oneTimeController.isEmpty()){
+				while(!oneTimeController.isEmpty()){
 					 oneTimeController.poll().run();
 				}
 				for (Map.Entry<String, SwitcherController> index : controllerMap.entrySet()) {
@@ -77,10 +75,12 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator  {
 					Assert.notNull(channel);
 					System.out.println("loop address: " + channel.getRemoteAddress().toString());
 					
-					/**
-					 * 执行长连接的请求任务
-					 */
-					invoke(keepAliveRequest,keepAliveResponse);
+					if (keepAliveRequest!=null){
+						/**
+						 * 执行长连接的请求任务
+						 */
+						invoke(keepAliveRequest,keepAliveResponse);
+					}
 					
 					/**
 					 * 执行一次性请求任务
@@ -128,6 +128,7 @@ public class ProcessInfoServiceTranslator extends AppCommonServiceTranslator  {
 				}
 
 			};
+			controller.setChannel(request.getChannel());
 			if (request.isKeepAlive()){
 				controller.setKeepAliveRequest(request);
 				controller.setKeepAliveResponse(response);

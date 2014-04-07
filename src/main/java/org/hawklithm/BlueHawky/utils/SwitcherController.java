@@ -80,7 +80,7 @@ public abstract class SwitcherController{
 
 	public void setKeepAliveRequest(AppServiceRequest keepAliveRequest) {
 		this.keepAliveRequest = keepAliveRequest;
-		setChannel(keepAliveRequest.getChannel());
+//		setChannel(keepAliveRequest.getChannel());
 	}
 
 	public AppServiceResponse getKeepAliveResponse() {

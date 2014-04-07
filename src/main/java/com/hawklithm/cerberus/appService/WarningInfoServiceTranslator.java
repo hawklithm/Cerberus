@@ -28,7 +28,7 @@ public class WarningInfoServiceTranslator extends AppCommonServiceTranslator{
 		@Override
 		public void run() {
 			while (true) {
-				while(oneTimeController.isEmpty()){
+				while(!oneTimeController.isEmpty()){
 					 oneTimeController.poll().run();
 				}
 				for (Map.Entry<String, SwitcherController> index : controllerMap.entrySet()) {
