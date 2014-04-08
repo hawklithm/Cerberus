@@ -47,11 +47,19 @@ public class FrontEndingCommunicationProtocol<T> {
 	}
 
 	public Integer getLength() {
+		if (condition.containsKey(LENGTH)){
 		return (Integer) condition.get(LENGTH);
+		}else {
+			return 15;
+		}
 	}
 
 	public Integer getOffset() {
+		if (condition.containsKey(OFFSET)){
 		return (Integer) condition.get(OFFSET);
+		}else {
+			return 0;
+		}
 	}
 
 	public List<T> getRows() {

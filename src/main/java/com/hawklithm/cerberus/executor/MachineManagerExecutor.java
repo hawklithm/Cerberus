@@ -221,7 +221,7 @@ public class MachineManagerExecutor implements FrontEndingCommunicationExecutor{
 				info.setMachineNumber((String) msg.getCondition().get("machineNumber"));
 			}
 			if (msg.getCondition().containsKey("equipmentId")) {
-				info.setEquipmentId((Integer) msg.getCondition().get("equipmentId"));
+				info.setEquipmentId(((Double) msg.getCondition().get("equipmentId")).intValue());
 			}
 			if (msg.getCondition().containsKey("manufacturer")) {
 				info.setManufacturer((String) msg.getCondition().get("manufacturer"));
