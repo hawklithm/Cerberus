@@ -3,6 +3,7 @@ package com.multiagent.hawklithm.staff.DO;
 public class ExStaffInfoDO extends StaffInfoDO {
 	private Integer staffAgeStart;
 	private Integer staffAgeEnd;
+	private Integer equipmentId;
 
 	public Integer getStaffAgeStart() {
 		return staffAgeStart;
@@ -18,5 +19,13 @@ public class ExStaffInfoDO extends StaffInfoDO {
 
 	public void setStaffAgeEnd(Integer staffAgeEnd) {
 		this.staffAgeEnd = staffAgeEnd;
+	}
+
+	public Integer getEquipmentId() {
+		return equipmentId;
+	}
+
+	public void setEquipmentId(Integer equipmentId) {
+		this.equipmentId = equipmentId;
 	}
 }

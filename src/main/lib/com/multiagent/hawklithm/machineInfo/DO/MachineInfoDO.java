@@ -9,10 +9,10 @@ gmt_create			date				表项创建日期
 gmt_modified		date				表项修改日期
 gmt_buy				date				购买日期
 gmt_last_repair		date				上次维修时间
-machine_number	char				机器编号
 equipment_id			int					机器RFID
 manufacturer			varchar			生产厂商
 detail					varchar 			设备详细参数
+equipmentType		varchar			设备类型
  * @author hawklithm
  * 2013-12-25下午1:07:17
  */
@@ -22,10 +22,10 @@ public class MachineInfoDO {
 	private Date gmtModified;
 	private Date gmtBuy;
 	private Date gmtLastRepair;
-	private String machineNumber;
 	private Integer equipmentId;
 	private String manufacturer;
 	private String detail;
+	private String equipmentType;
 	public String getManufacturer() {
 		return manufacturer;
 	}
@@ -62,12 +62,6 @@ public class MachineInfoDO {
 	public void setGmtLastRepair(Date gmtLastRepair) {
 		this.gmtLastRepair = gmtLastRepair;
 	}
-	public String getMachineNumber() {
-		return machineNumber;
-	}
-	public void setMachineNumber(String machineNumber) {
-		this.machineNumber = machineNumber;
-	}
 	public Integer getEquipmentId() {
 		return equipmentId;
 	}
@@ -79,5 +73,11 @@ public class MachineInfoDO {
 	}
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+	public String getEquipmentType() {
+		return equipmentType;
+	}
+	public void setEquipmentType(String equipmentType) {
+		this.equipmentType = equipmentType;
 	}
 }

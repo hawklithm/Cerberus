@@ -24,8 +24,10 @@ public interface RPCStaffInfoManagerInterface {
 
 	StaffInfoDO[] queryByAllInfo(Integer staffId, String staffName, String staffPhoneNumber,
 			String staffGender, Integer staffAgeStart, Integer staffAgeEnd,
-			String staffDepartmentId, Integer offset, Integer length) throws DataAccessException;
+			String staffDepartmentName, Integer offset, Integer length) throws DataAccessException;
 
 	Integer submit(String staffName, String staffPhoneNumber, String staffGender, Integer staffAge,
 			String staffDepartmentId) throws DataAccessException;
+	
+	StaffInfoDO[] queryByEquipmentId(Integer equipmentId);
 }

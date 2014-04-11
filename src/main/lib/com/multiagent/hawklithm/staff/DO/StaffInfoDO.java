@@ -28,6 +28,9 @@ import java.util.Date;
 <tr>
 <td>staff_department_id	</td>	<td>char	</td><td>所属科室，对应配置文件中参数 </td>
 </tr>
+<tr>
+<td>user_icon_path	</td>	<td>char	</td><td>头像路径 </td>
+</tr>
 </table>
  * @author hawklithm
  * 2013-12-25下午5:04:45
@@ -40,7 +43,8 @@ public class StaffInfoDO {
 	private String staffPhoneNumber;
 	private String staffGender;
 	private Integer staffAge;
-	private String staffDepartmentId;
+	private String staffDepartmentName;
+	private String userIconPath;
 
 	public Integer getStaffId() {
 		return staffId;
@@ -98,11 +102,20 @@ public class StaffInfoDO {
 		this.staffAge = staffAge;
 	}
 
-	public String getStaffDepartmentId() {
-		return staffDepartmentId;
+	public String getStaffDepartmentName() {
+		return staffDepartmentName;
 	}
 
-	public void setStaffDepartmentId(String staffDepartmentId) {
-		this.staffDepartmentId = staffDepartmentId;
+	public void setStaffDepartmentName(String staffDepartmentName) {
+		this.staffDepartmentName = staffDepartmentName;
 	}
+
+	public String getUserIconPath() {
+		return userIconPath;
+	}
+
+	public void setUserIconPath(String userIconPath) {
+		this.userIconPath = userIconPath;
+	}
+
 }

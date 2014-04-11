@@ -149,7 +149,7 @@ public class MachineManagerExecutor implements FrontEndingCommunicationExecutor{
 		ExMachineInfoDO msg = getOrderCluster(message).get(0);
 		MachineInfoDO[] infos = machineInfoManager.queryByAllInfo(msg.getId(),
 				msg.getGmtBuyStart(), msg.getGmtBuyEnd(), msg.getGmtLastRepairStart(),
-				msg.getGmtLastRepairEnd(), msg.getMachineNumber(), msg.getEquipmentId(),
+				msg.getGmtLastRepairEnd(), msg.getEquipmentType(), msg.getEquipmentId(),
 				msg.getManufacturer(), msg.getDetail(), message.getOffset(), message.getLength());
 		for (MachineInfoDO index : infos) {
 			result.getRows().add(getFrontEndingRequest(index).toMapping());
@@ -159,12 +159,15 @@ public class MachineManagerExecutor implements FrontEndingCommunicationExecutor{
 	private FrontEndingRequestCondition getFrontEndingRequest(MachineInfoDO info) {
 		FrontEndingRequestCondition condition = new FrontEndingRequestCondition();
 		condition.getCondition().put("id", info.getId());
+		condition.getCondition().put("gmtCreate", info.getGmtCreate());
+		condition.getCondition().put("gmtModified", info.getGmtModified());
 		condition.getCondition().put("gmtBuy", info.getGmtBuy());
 		condition.getCondition().put("gmtLastRepair", info.getGmtLastRepair());
-		condition.getCondition().put("machineNumber", info.getMachineNumber());
+		condition.getCondition().put("equipmentType", info.getEquipmentType());
 		condition.getCondition().put("equipmentId", info.getEquipmentId());
 		condition.getCondition().put("manufacturer", info.getManufacturer());
 		condition.getCondition().put("detail", info.getDetail());
+		condition.getCondition().put("name", info.getEquipmentType()+info.getEquipmentId());
 		return condition;
 	}
 
@@ -217,8 +220,8 @@ public class MachineManagerExecutor implements FrontEndingCommunicationExecutor{
 			if (msg.getCondition().containsKey("gmtLastRepair")) {
 				info.setGmtLastRepair((Date) msg.getCondition().get("gmtLastRepair"));
 			}
-			if (msg.getCondition().containsKey("machineNumber")) {
-				info.setMachineNumber((String) msg.getCondition().get("machineNumber"));
+			if (msg.getCondition().containsKey("equipmentType")) {
+				info.setEquipmentType((String) msg.getCondition().get("equipmentType"));
 			}
 			if (msg.getCondition().containsKey("equipmentId")) {
 				info.setEquipmentId(((Double) msg.getCondition().get("equipmentId")).intValue());

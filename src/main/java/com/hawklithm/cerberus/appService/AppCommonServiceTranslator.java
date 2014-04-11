@@ -38,6 +38,7 @@ public class AppCommonServiceTranslator extends AbstractAppServiceTranslator{
 			FrontEndingCommunicationProtocol<Map<String,Object>> result;
 			result = executor.execute(message);
 			response.write(gson.toJson(result));
+			response.setStatus("connected");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

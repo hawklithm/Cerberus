@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
-import com.hawklithm.cerberus.servlet.MessageTranslateServlet;
+import com.hawklithm.cerberus.protocol.StaffEquipmentMappingOperateTypeConstant;
 import com.multiagent.hawklithm.staff.DO.ExStaffInfoDO;
 import com.multiagent.hawklithm.staff.DO.StaffInfoDO;
 import com.multiagent.hawklithm.staff.interface4rpc.RPCStaffInfoManagerInterface;
@@ -38,6 +38,10 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 			} else if (message.getOperateType().equals(OperateTypeConstant.OPERATE_MODIFY)) {
 				update(message);
 				result.setStatusOk();
+			}else if (message.getOperateType().equals(StaffEquipmentMappingOperateTypeConstant.OPERATE_LOGIN)){
+				
+			}else if (message.getOperateType().equals(StaffEquipmentMappingOperateTypeConstant.OPERATE_LOGOUT)){
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,18 +49,25 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 		return result;
 	}
 
-	protected void query(FrontEndingCommunicationProtocol<Map<String,Object>> message,
-			FrontEndingCommunicationProtocol<Map<String,Object>> result) throws Exception {
+	protected void query(FrontEndingCommunicationProtocol<Map<String, Object>> message,
+			FrontEndingCommunicationProtocol<Map<String, Object>> result) throws Exception {
 		if (message.getRows().size() > 1) {
 			throw new Exception("查询条件只能包含一个订单信息");
 		}
 		ExStaffInfoDO msg = getOrderCluster(message).get(0);
-		StaffInfoDO[] infos = staffInfoManager.queryByAllInfo(msg.getStaffId(),
-				msg.getStaffName(), msg.getStaffPhoneNumber(), msg.getStaffGender(),
-				msg.getStaffAgeStart(), msg.getStaffAgeEnd(), msg.getStaffDepartmentId(),
-				message.getOffset(), message.getLength());
-		for (StaffInfoDO index : infos) {
-			result.getRows().add(getFrontEndingRequest(index).toMapping());
+		if (msg.getEquipmentId() != null) {
+			StaffInfoDO[] infos = staffInfoManager.queryByEquipmentId(msg.getEquipmentId());
+			for (StaffInfoDO index : infos) {
+				result.getRows().add(getFrontEndingRequest(index).toMapping());
+			}
+		} else {
+			StaffInfoDO[] infos = staffInfoManager.queryByAllInfo(msg.getStaffId(),
+					msg.getStaffName(), msg.getStaffPhoneNumber(), msg.getStaffGender(),
+					msg.getStaffAgeStart(), msg.getStaffAgeEnd(), msg.getStaffDepartmentName(),
+					message.getOffset(), message.getLength());
+			for (StaffInfoDO index : infos) {
+				result.getRows().add(getFrontEndingRequest(index).toMapping());
+			}
 		}
 	}
 
@@ -67,7 +78,8 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 		condition.getCondition().put("staffPhoneNumber", info.getStaffPhoneNumber());
 		condition.getCondition().put("staffGender", info.getStaffGender());
 		condition.getCondition().put("staffAge", info.getStaffAge());
-		condition.getCondition().put("staffDepartmentId", info.getStaffDepartmentId());
+		condition.getCondition().put("staffDepartmentName", info.getStaffDepartmentName());
+		condition.getCondition().put("userIconPath", info.getUserIconPath());
 		return condition;
 	}
 
@@ -87,7 +99,7 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 		for (StaffInfoDO info : infos) {
 			staffInfoManager.modify(info.getStaffId(), info.getStaffName(),
 					info.getStaffPhoneNumber(), info.getStaffGender(), info.getStaffAge(),
-					info.getStaffDepartmentId());
+					info.getStaffDepartmentName());
 		}
 	}
 
@@ -96,7 +108,7 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 		List<ExStaffInfoDO> infos = getOrderCluster(message);
 		for (StaffInfoDO info : infos) {
 			staffInfoManager.submit(info.getStaffName(), info.getStaffPhoneNumber(),
-					info.getStaffGender(), info.getStaffAge(), info.getStaffDepartmentId());
+					info.getStaffGender(), info.getStaffAge(), info.getStaffDepartmentName());
 		}
 	}
 
@@ -134,8 +146,14 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 			if (msg.getCondition().containsKey("staffAge")) {
 				info.setStaffAge((Integer) msg.getCondition().get("staffAge"));
 			}
-			if (msg.getCondition().containsKey("staffDepartmentId")) {
-				info.setStaffDepartmentId((String) msg.getCondition().get("staffDepartmentId"));
+			if (msg.getCondition().containsKey("staffDepartmentName")) {
+				info.setStaffDepartmentName((String) msg.getCondition().get("staffDepartmentName"));
+			}
+			if (msg.getCondition().containsKey("equipmentId")){
+				info.setEquipmentId((Integer)msg.getCondition().get("equipmentId"));
+			}
+			if (msg.getCondition().containsKey("userIconPath")){
+				info.setUserIconPath((String)msg.getCondition().get("userIconPath"));
 			}
 			ret.add(info);
 		}

@@ -92,8 +92,9 @@ public class AppServiceNettyHandler extends NettyHandler {
 			setStatus(retMap, "fail");
 			System.out.println("handler is null");
 		}
+		setTargetUrl(retMap, targetUrl);
 		setAuthenticate(retMap,response.getAuthenticate());
-		setContent(retMap, response.getResponse());
+		setResponse(retMap, response.getResponse());
 		sendMessage(gson.toJson(retMap), channel);
 	}
 	@Override

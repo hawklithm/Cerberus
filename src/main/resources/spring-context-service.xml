@@ -52,6 +52,12 @@
 		<property name="executor" ref="machineManagerExecutor" />
 		<property name="targetUrl" value="/MachineManager" />
 	</bean>
+	<bean id="staffManagerAppService"
+		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
+		<property name="responsor" ref="singleTimeResponsor"/>
+		<property name="executor" ref="staffManagerExecutor" />
+		<property name="targetUrl" value="/StaffManager" />
+	</bean>
 	<bean id="hospitalAppService"
 		class="com.hawklithm.cerberus.appService.AppCommonServiceTranslator">
 		<property name="responsor" ref="singleTimeResponsor"/>
