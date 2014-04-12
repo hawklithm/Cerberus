@@ -10,6 +10,8 @@ public class AppServiceSingleTimeResponsor implements AppServiceResponsor{
 	}
 	@Override
 	public String response(){
-		return messageBuffer.toString();
+		String tmp=messageBuffer.toString();
+		messageBuffer.setLength(0);
+		return tmp;
 	}
 }
