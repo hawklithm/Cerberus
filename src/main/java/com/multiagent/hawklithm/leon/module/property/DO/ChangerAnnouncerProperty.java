@@ -13,6 +13,7 @@ public class ChangerAnnouncerProperty {
 	private List<Integer> packageRmove=new ArrayList<Integer>();
 	private Integer machineRFID;
 	private Integer staffRFID;
+	private String sourceType;
 	
 	public ChangerAnnouncerProperty(){}
 	public ChangerAnnouncerProperty(int rfid,int staffRfid){
@@ -79,6 +80,12 @@ public class ChangerAnnouncerProperty {
 
 	public void setStaffRFID(Integer staffRFID) {
 		this.staffRFID = staffRFID;
+	}
+	public String getSourceType() {
+		return sourceType;
+	}
+	public void setSourceType(String sourceType) {
+		this.sourceType = sourceType;
 	}
 
 }

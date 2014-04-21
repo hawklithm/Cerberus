@@ -18,6 +18,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 //	protected Integer[] packageRFIDs;
 	protected Integer staffRFID;
 	protected Date timeStamp;
+	protected String sourceType;
 //	protected Integer cubage;
 
 	public ChangerAnnouncerPropertyArrayVersion(ChangerAnnouncerProperty property) {
@@ -28,6 +29,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 				new Integer[property.getPackageRmove().size()]);
 		machineRFID=property.getMachineRFID();
 		staffRFID=property.getStaffRFID();
+		sourceType=property.getSourceType();
 //		itemRFIDs = property.getItemRFIDs().toArray(new Integer[property.getItemRFIDs().size()]);
 //		packageRFIDs = property.getPackageRFIDs().toArray(
 //				new Integer[property.getItemRFIDs().size()]);
@@ -51,6 +53,7 @@ public class ChangerAnnouncerPropertyArrayVersion {
 		ret.setPackageAdd(packageAdd);
 		CollectionUtils.addAll(packageRmove, this.packageRemove);
 		ret.setPackageRmove(packageRmove);
+		ret.setSourceType(sourceType);
 //		CollectionUtils.addAll(itemRFIDs, this.itemRFIDs);
 //		ret.setItemRFIDs(itemRFIDs);
 //		CollectionUtils.addAll(packageRFIDs, this.packageRFIDs);
@@ -85,5 +88,61 @@ public class ChangerAnnouncerPropertyArrayVersion {
 
 	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
+	}
+
+	public ItemInfoDO[] getItemAdd() {
+		return itemAdd;
+	}
+
+	public void setItemAdd(ItemInfoDO[] itemAdd) {
+		this.itemAdd = itemAdd;
+	}
+
+	public ItemInfoDO[] getItemRemove() {
+		return itemRemove;
+	}
+
+	public void setItemRemove(ItemInfoDO[] itemRemove) {
+		this.itemRemove = itemRemove;
+	}
+
+	public Integer[] getPackageAdd() {
+		return packageAdd;
+	}
+
+	public void setPackageAdd(Integer[] packageAdd) {
+		this.packageAdd = packageAdd;
+	}
+
+	public Integer[] getPackageRemove() {
+		return packageRemove;
+	}
+
+	public void setPackageRemove(Integer[] packageRemove) {
+		this.packageRemove = packageRemove;
+	}
+
+	public Integer getMachineRFID() {
+		return machineRFID;
+	}
+
+	public void setMachineRFID(Integer machineRFID) {
+		this.machineRFID = machineRFID;
+	}
+
+	public Integer getStaffRFID() {
+		return staffRFID;
+	}
+
+	public void setStaffRFID(Integer staffRFID) {
+		this.staffRFID = staffRFID;
+	}
+
+	public String getSourceType() {
+		return sourceType;
+	}
+
+	public void setSourceType(String sourceType) {
+		this.sourceType = sourceType;
 	}
 }

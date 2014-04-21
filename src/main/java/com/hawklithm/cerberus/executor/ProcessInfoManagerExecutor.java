@@ -12,7 +12,10 @@ import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.MachineInfoOperator;
 import com.hawklithm.cerberus.protocol.ProtocolUtils;
 import com.multiagent.hawklithm.exception.NothingChangeAndDoNotNeedToExecuteException;
+import com.multiagent.hawklithm.item.dataobject.ExItemInfoDO;
+import com.multiagent.hawklithm.item.dataobject.ItemInfoDO;
 import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerPropertyArrayVersion;
+import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerPropertyWithStatus;
 import com.multiagent.hawklithm.leon.process.dataobject.ProcessInfoDO;
 import com.multiagent.hawklithm.leon.process.interface4rpc.RPCProcessInfoManagerInterface;
 
@@ -30,6 +33,68 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 	private static void setId(Integer id,Map<String, Object> map){
 		map.put(ID, id);
 	}
+	
+	private class ItemStateAssembler{
+		public final static int STATUS_READY=0x01,STATUS_RUNNING=0x02,STATUS_DONE=0x03;
+		private Map<Integer, Integer> map=new HashMap<Integer,Integer>();
+		List<ChangerAnnouncerPropertyArrayVersion> list=new ArrayList<ChangerAnnouncerPropertyArrayVersion>();
+		public void add(ChangerAnnouncerPropertyArrayVersion info,int status){
+			list.add(info);
+			for (ItemInfoDO index:info.getItemAdd()){
+				if (map.containsKey(index.getItemId())){
+					Integer oldStatus=map.get(index.getItemId());
+					map.put(index.getItemId(),Math.max(oldStatus, status));
+				}else {
+					map.put(index.getItemId(), status);
+				}
+			}
+		}
+		public ChangerAnnouncerPropertyWithStatus[] get(){
+			ChangerAnnouncerPropertyWithStatus[] ans=new ChangerAnnouncerPropertyWithStatus[list.size()];
+			int ci=0;
+			for (ChangerAnnouncerPropertyArrayVersion index:list){
+				ans[ci]=new ChangerAnnouncerPropertyWithStatus();
+				Map<Integer,ExItemInfoDO> tempList=new HashMap<Integer,ExItemInfoDO>();
+				boolean gateTag=index.getSourceType().equals("gate_tag");
+				for (ItemInfoDO oldItem:index.getItemAdd()){
+					ExItemInfoDO newItem=ExItemInfoDO.getExtend(oldItem);
+					newItem.setStatus(map.get(oldItem.getItemId()));
+					/**
+					 * 如果是工段数据，并且是待处理状态，才添加，否则不添加。这样可以减少数据传输量
+					 */
+					if (gateTag&&newItem.getStatus()==ItemStateAssembler.STATUS_READY){
+						tempList.put(newItem.getItemId(), newItem);
+					}
+					else if(!gateTag){
+						tempList.put(newItem.getItemId(), newItem);
+					}
+				}
+				for (ItemInfoDO oldItem:index.getItemRemove()){
+					ExItemInfoDO newItem=ExItemInfoDO.getExtend(oldItem);
+					newItem.setStatus(map.get(oldItem.getItemId()));
+					/**
+					 * 如果是工段数据，并且是待处理状态，才添加，否则不添加。这样可以减少数据传输量
+					 */
+					if (gateTag&&newItem.getStatus()==ItemStateAssembler.STATUS_READY){
+						tempList.put(newItem.getItemId(), newItem);
+					}
+					else if(!gateTag){
+						tempList.put(newItem.getItemId(), newItem);
+					}
+				}
+				ExItemInfoDO[] exItem=new ExItemInfoDO[tempList.size()];
+				int cj=0;
+				for (Map.Entry<Integer, ExItemInfoDO> entry : tempList.entrySet()){
+					exItem[cj++]=entry.getValue();
+				}
+				ans[ci].setItemInfo(exItem);
+				ans[ci].setOldVersion(index);
+				ci++;
+			}
+			return ans;
+		}
+		
+	}
 
 	@Override
 	public FrontEndingCommunicationProtocol<Map<String,Object>> execute(FrontEndingCommunicationProtocol<Map<String,Object>> message )
@@ -42,9 +107,9 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			}else if (message.getOperateType().equals(MachineInfoOperator.MACHINE_DETAIL_QUERY)){
 				machineDetailQuery(message, result);
 				result.setStatusOk();
-			}else if (message.getOperateType().equals(MachineInfoOperator.MACHINE_DETAIL_SUBMIT)){
+			}/*else if (message.getOperateType().equals(MachineInfoOperator.MACHINE_DETAIL_SUBMIT)){
 				
-			}
+			}*/
 		} catch (Exception e) {
 			if (e instanceof NothingChangeAndDoNotNeedToExecuteException){
 				throw e;
@@ -106,6 +171,7 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			if (StringUtils.isEmpty(msg.getProcessName())) continue;
 			Map<String, Object> ans=new  HashMap<String, Object>();
 			ChangerAnnouncerPropertyArrayVersion[] retValue=processInfoManager.getBufferedPropertyList(msg.getProcessName());
+			
 			List<ChangerAnnouncerPropertyArrayVersion> checked=new ArrayList<ChangerAnnouncerPropertyArrayVersion>(retValue.length);
 			for (int i=0;i<retValue.length;i++){
 				if (!retValue[i].isDataNull())
@@ -114,7 +180,16 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			if (checked.size()==0){
 				throw new NothingChangeAndDoNotNeedToExecuteException("nothing change!");
 			}
-			ProcessInfoManagerExecutor.setRetValue(checked.toArray(new ChangerAnnouncerPropertyArrayVersion[checked.size()]),ans);
+			
+			/**
+			 *  状态合并
+			 */
+			ItemStateAssembler assembler=new ItemStateAssembler();
+			for (ChangerAnnouncerPropertyArrayVersion ch:checked){
+				assembler.add(ch, ItemStateAssembler.STATUS_RUNNING);
+			}
+			
+			ProcessInfoManagerExecutor.setRetValue(assembler.get(),ans);
 			ProcessInfoManagerExecutor.setProcessName(msg.getProcessName(),ans);
 			result.getRows().add(getFrontEndingRequest(ans).toMapping());
 		}
