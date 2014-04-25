@@ -132,7 +132,12 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 				info.setStaffAgeEnd((Integer) msg.getCondition().get("staffAgeEnd"));
 			}
 			if (msg.getCondition().containsKey("staffId")) {
-				info.setStaffId((Integer) msg.getCondition().get("staffId"));
+				Object object=msg.getCondition().get("staffId");
+				if (object instanceof Double){
+					info.setStaffId(((Double)object).intValue());
+				}else {
+					info.setStaffId((Integer)object);
+				}
 			}
 			if (msg.getCondition().containsKey("staffName")) {
 				info.setStaffName((String) msg.getCondition().get("staffName"));

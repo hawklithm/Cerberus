@@ -61,6 +61,9 @@ public class ItemInfoDO {
 		this.interconvertible = interconvertible;
 	}
 	public String getRemark() {
+		if (remark==null){
+			return "";
+		}
 		return remark;
 	}
 	public void setRemark(String remark) {
