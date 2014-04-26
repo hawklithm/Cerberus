@@ -19,6 +19,7 @@ public abstract class SwitcherController{
 //	protected Queue<AppServiceResponse>response=new LinkedList<AppServiceResponse>();
 	protected Queue<Pair<AppServiceRequest, AppServiceResponse>> request=new ConcurrentLinkedQueue<Pair<AppServiceRequest, AppServiceResponse>>();
 	protected String name;
+	protected boolean alive=true;
 	
 //	public class ServicePair{
 //		public  AppServiceRequest keepAliveRequest;
@@ -89,6 +90,14 @@ public abstract class SwitcherController{
 
 	public void setKeepAliveResponse(AppServiceResponse keepAliveResponse) {
 		this.keepAliveResponse = keepAliveResponse;
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 	
 }
