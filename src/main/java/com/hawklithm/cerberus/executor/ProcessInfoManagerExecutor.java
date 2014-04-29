@@ -37,10 +37,12 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 	private class ItemStateAssembler{
 		public final static int STATUS_READY=0x01,STATUS_RUNNING=0x02,STATUS_DONE=0x03;
 		private Map<Integer, Integer> map=new HashMap<Integer,Integer>();
-		List<ChangerAnnouncerPropertyArrayVersion> list=new ArrayList<ChangerAnnouncerPropertyArrayVersion>();
-		public void add(ChangerAnnouncerPropertyArrayVersion info,int status){
+		private List<ChangerAnnouncerPropertyArrayVersion> list=new ArrayList<ChangerAnnouncerPropertyArrayVersion>();
+		public void addProperty(ChangerAnnouncerPropertyArrayVersion info){
 			list.add(info);
-			for (ItemInfoDO index:info.getItemAdd()){
+		}
+		public void add(ItemInfoDO[] infos,int status){
+			for (ItemInfoDO index:infos){
 				if (map.containsKey(index.getItemId())){
 					Integer oldStatus=map.get(index.getItemId());
 					map.put(index.getItemId(),Math.max(oldStatus, status));
@@ -186,7 +188,13 @@ public class ProcessInfoManagerExecutor implements FrontEndingCommunicationExecu
 			 */
 			ItemStateAssembler assembler=new ItemStateAssembler();
 			for (ChangerAnnouncerPropertyArrayVersion ch:checked){
-				assembler.add(ch, ItemStateAssembler.STATUS_RUNNING);
+				assembler.addProperty(ch);
+				if (ch.getSourceType().equals("gate_tag")){
+					assembler.add(ch.getItemAdd(), ItemStateAssembler.STATUS_READY);
+				}else {
+					assembler.add(ch.getItemAdd(), ItemStateAssembler.STATUS_RUNNING);
+					assembler.add(ch.getItemRemove(), ItemStateAssembler.STATUS_DONE);
+				}
 			}
 			
 			ProcessInfoManagerExecutor.setRetValue(assembler.get(),ans);
