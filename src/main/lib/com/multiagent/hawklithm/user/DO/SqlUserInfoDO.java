@@ -17,6 +17,15 @@ public class SqlUserInfoDO {
 	private Boolean isEmployee;
 	private Integer hospitalId;
 	private Boolean enable;
+    private int staffId;
+    
+	public int getStaffId() {
+		return staffId;
+	}
+
+	public void setStaffId(int staffId) {
+		this.staffId = staffId;
+	}
 
 	public Integer getUserId() {
 		return userId;

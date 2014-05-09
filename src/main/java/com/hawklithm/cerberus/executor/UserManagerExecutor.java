@@ -66,13 +66,17 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 
 	private FrontEndingRequestCondition getFrontEndingRequest(SqlUserInfoDO userInfo) {
 		FrontEndingRequestCondition condition = new FrontEndingRequestCondition();
-		condition.getCondition().put("userId", userInfo.getUserId());
-		condition.getCondition().put("userName", userInfo.getUserName());
-		condition.getCondition().put("password", userInfo.getPassword());
-		condition.getCondition().put("level", userInfo.getLevel());
-		condition.getCondition().put("isEmployee", userInfo.getIsEmployee());
-		condition.getCondition().put("hospitalId", userInfo.getHospitalId());
-		condition.getCondition().put("enable", userInfo.getEnable());
+		if(userInfo!=null){
+			condition.getCondition().put("userId", userInfo.getUserId());
+			condition.getCondition().put("userName", userInfo.getUserName());
+			condition.getCondition().put("password", userInfo.getPassword());
+			condition.getCondition().put("level", userInfo.getLevel());
+			condition.getCondition().put("isEmployee", userInfo.getIsEmployee());
+			condition.getCondition().put("hospitalId", userInfo.getHospitalId());
+			condition.getCondition().put("enable", userInfo.getEnable());
+		
+		}
+
 		return condition;
 	}
 

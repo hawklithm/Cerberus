@@ -2,6 +2,7 @@ package com.hawklithm.cerberus.appService;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -31,9 +32,20 @@ public class WarningInfoServiceTranslator extends AppCommonServiceTranslator{
 				while(!oneTimeController.isEmpty()){
 					 oneTimeController.poll().run();
 				}
-				for (Map.Entry<String, SwitcherController> index : controllerMap.entrySet()) {
-					index.getValue().run();
+				Iterator<Map.Entry<String, SwitcherController> > it=controllerMap.entrySet().iterator();
+				while(it.hasNext()){
+					Map.Entry<String, SwitcherController> entry=it.next();
+					SwitcherController switcher=entry.getValue();
+					if (!switcher.isAlive()){
+						it.remove();
+					}else {
+						switcher.run();
+					}
 				}
+//				
+//				for (Map.Entry<String, SwitcherController> index : controllerMap.entrySet()) {
+//					index.getValue().run();
+//				}
 				System.out.print(".");
 				try {
 					Thread.sleep(3000);
@@ -72,11 +84,20 @@ public class WarningInfoServiceTranslator extends AppCommonServiceTranslator{
 				@Override
 				public void run() {
 					Assert.notNull(channel);
+					if (!channel.isConnected()){
+						this.setAlive(false);
+						return;
+					}
 					System.out.println("loop address: " + channel.getRemoteAddress().toString());
 					/**
 					 * 执行长连接
 					 */
-					invoke(keepAliveRequest, keepAliveResponse);
+					if (keepAliveRequest!=null){
+						/**
+						 * 执行长连接的请求任务
+						 */
+						invoke(keepAliveRequest,keepAliveResponse);
+					}
 					
 					/**
 					 * 执行一次性请求任务
@@ -125,19 +146,17 @@ public class WarningInfoServiceTranslator extends AppCommonServiceTranslator{
 				}
 
 			};
-			
-			controllerMap.put(addressAndPort, controller);
-			System.out.println("添加新连接: "+addressAndPort);
-		}
-		if (request.isKeepAlive()){
-			controller.setKeepAliveRequest(request);
-			controller.setKeepAliveResponse(response);
-			controllerMap.put(addressAndPort, controller);
-			System.out.println("添加新连接: "+addressAndPort);
-		}else {
-			controller.addOneTimeRequest(new Pair<AppServiceRequest, AppServiceResponse>(request, response));
-			oneTimeController.add(controller);
-			System.out.println("添加一次性任务");
+			controller.setChannel(request.getChannel());
+			if (request.isKeepAlive()){
+				controller.setKeepAliveRequest(request);
+				controller.setKeepAliveResponse(response);
+				controllerMap.put(addressAndPort, controller);
+				System.out.println("添加新连接: "+addressAndPort);
+			}else {
+				controller.addOneTimeRequest(new Pair<AppServiceRequest, AppServiceResponse>(request, response));
+				oneTimeController.add(controller);
+				System.out.println("添加一次性任务");
+			}
 		}
 		
 		FrontEndingCommunicationProtocol<Map<String, Object>> result = new FrontEndingCommunicationProtocol<Map<String, Object>>();
