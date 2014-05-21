@@ -76,6 +76,10 @@ public class AppServiceNettyHandler extends NettyHandler {
 		String targetUrl=getTargetUrl(infoMap);
 		AppServiceHandler handler= processorRegister.getAppService(targetUrl);
 		AppServiceRequest request=new AppServiceRequest();
+		/*
+		 * ÉèÖÃrequestµÄAuthenticate'setChannel'setKeepAlive'setContent'
+		 * reponseµÄChannel¡¢
+		 */
 		request.setAuthenticate(getAuthenticate(infoMap));
 		request.setChannel(channel);
 		request.setKeepAlive(getKeepAlive(infoMap).equals(KEEP_ALIVE_TRUE));

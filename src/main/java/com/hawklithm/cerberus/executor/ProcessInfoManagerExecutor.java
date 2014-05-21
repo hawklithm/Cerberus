@@ -15,7 +15,6 @@ import com.hawklithm.cerberus.protocol.ProtocolUtils;
 import com.multiagent.hawklithm.exception.NothingChangeAndDoNotNeedToExecuteException;
 import com.multiagent.hawklithm.item.dataobject.ExItemInfoDO;
 import com.multiagent.hawklithm.item.dataobject.ItemInfoDO;
-import com.multiagent.hawklithm.leon.DO.SqlReaderAtEquipmentDO;
 import com.multiagent.hawklithm.leon.interface4rpc.RPCMachineFlowRecordManagerInterface;
 import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerPropertyArrayVersion;
 import com.multiagent.hawklithm.leon.module.property.DO.ChangerAnnouncerPropertyWithStatus;

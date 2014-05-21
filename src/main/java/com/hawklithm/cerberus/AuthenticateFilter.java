@@ -15,6 +15,7 @@ import javax.servlet.ServletResponse;
  */
 public class AuthenticateFilter implements Filter {
 
+	
     /**
      * Default constructor. 
      */

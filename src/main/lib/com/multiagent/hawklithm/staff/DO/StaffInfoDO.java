@@ -45,7 +45,6 @@ public class StaffInfoDO {
 	private Integer staffAge;
 	private String staffDepartmentName;
 	private String userIconPath;
-
 	public Integer getStaffId() {
 		return staffId;
 	}

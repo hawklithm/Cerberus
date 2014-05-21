@@ -11,6 +11,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:cerberus.properties" />
 	</bean>
+	
 	<bean id="authenticationDao" class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
 		<property name="dataSource" ref="dataSource" />
 		<property name="usersByUsernameQuery">
@@ -28,17 +29,20 @@
 			</value>
 		</property>
 	</bean>
+	<!-- 配置数据源 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://192.168.1.200/xinhua" />
+		<property name="url" value="jdbc:mysql://192.168.19.200/xinhua" />
 		<property name="username" value="hawky" />
 		<property name="password" value="hawky" />
 	</bean>
+	<!-- 为验证器提供以关系数据库作为储存方式的用于验证数据 -->
 	<bean id="daoAuthenticationProvider"
 		class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
 		<property name="userDetailsService" ref="authenticationDao" />
 	</bean>
+	<!-- 授权器 -->
 	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
 		<property name="providers">
 			<list>
@@ -47,6 +51,7 @@
 		</property>
 	</bean>
 	<bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter" />
+	<!-- 授权器 -->
 	<bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
 		<property name="decisionVoters">
 			<list>
@@ -74,6 +79,13 @@
 		<property name="loginFormUrl" value="${login.url}" />
 		<property name="forceHttps" value="false" />
 	</bean>
+	<!-- 通过配置可以对登陆请求进行雅正 -->
+	<!-- 
+	处理的URL
+	验证失败转的页面
+	默认的登陆后的界面
+	
+	 -->
 	<bean id="authenticationProcessingFilter"
 		class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
 		<property name="filterProcessesUrl" value="/j_spring_security_check" />
@@ -88,6 +100,10 @@
 	<bean id="accessDeniedHandler" class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
 		<property name="errorPage" value="/error.htm" />
 	</bean>
+<!-- 资源请求的安全性配置
+身份严震管理器器
+组件管理器
+URL对应的权限 -->
 	<bean id="filterSecurityInterceptor"
 		class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
 		<property name="authenticationManager" ref="authenticationManager" />
@@ -113,11 +129,14 @@
 			</list>
 		</property>
 	</bean>
+	<!-- 资源请求的安全 性配置 -->
 	<bean id="securityInterceptor"
 		class="org.acegisecurity.intercept.method.aopalliance.MethodSecurityInterceptor">
+		<!-- 身份验证管理器 -->
 		<property name="authenticationManager">
 			<ref bean="authenticationManager" />
 		</property>
+		<!-- 组建管理授权过程 -->
 		<property name="accessDecisionManager">
 			<ref bean="accessDecisionManager" />
 		</property>

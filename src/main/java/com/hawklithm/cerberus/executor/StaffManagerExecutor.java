@@ -125,6 +125,12 @@ public class StaffManagerExecutor implements FrontEndingCommunicationExecutor{
 		for (Map<String,Object> index : message.getRows()) {
 			FrontEndingRequestCondition msg=new FrontEndingRequestCondition(index);
 			ExStaffInfoDO info = new ExStaffInfoDO();
+			if(msg.getCondition().containsKey("name")){
+				info.setStaffAgeStart((Integer) msg.getCondition().get("name"));
+			}
+			if(msg.getCondition().containsKey("role")){
+				info.setStaffAgeStart((Integer) msg.getCondition().get("role"));
+			}
 			if (msg.getCondition().containsKey("staffAgeStart")) {
 				info.setStaffAgeStart((Integer) msg.getCondition().get("staffAgeStart"));
 			}

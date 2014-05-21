@@ -6,6 +6,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FrontEndingRequestOrder {
+	/*
+	 * main主订单
+	 * subs（
+	 * 父订单id、包类型、包数量)
+	 * reflect(
+	 * 父订单id,器械类型、器械数量)
+	 * 
+	 */
 	private static String MAIN_OBJECT="main",SUB_OBJECT="subs",REFLECT_OBJECT="reflects";
 	private HashMap<String, Object> main;
 	private ArrayList<HashMap<String, Object>> subs;

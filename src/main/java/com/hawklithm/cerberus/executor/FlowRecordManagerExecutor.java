@@ -12,15 +12,24 @@ import com.google.gson.Gson;
 import com.hawklithm.cerberus.protocol.FlowRecordDO;
 import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
+import com.hawklithm.cerberus.protocol.HistoryAllAskDO;
+import com.hawklithm.cerberus.protocol.HistoryAskConstant;
+import com.hawklithm.cerberus.protocol.HistoryVideoAskDO;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
 import com.hawklithm.cerberus.protocol.ProtocolUtils;
+import com.hawklithm.cerberus.video.dataobject.VideoInfoDO;
+import com.hawklithm.cerberus.video.manager.VideoManager;
 import com.multiagent.hawklithm.history.dataobject.ExItemHistoryDO;
-import com.multiagent.hawklithm.history.dataobject.ItemHistoryDO;
+import com.multiagent.hawklithm.history.dataobject.ItemAllHistoryInfoDO;
+import com.multiagent.hawklithm.history.dataobject.PackageAllHistoryInfoDO;
 import com.multiagent.hawklithm.history.dataobject.PackageHistoryDO;
+import com.multiagent.hawklithm.history.interface4rpc.RPCHistoryInfoGetterInterface;
 import com.multiagent.hawklithm.leon.interface4rpc.RPCMachineFlowRecordManagerInterface;
 
 public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecutor{
 	private RPCMachineFlowRecordManagerInterface flowRecordManager;
+	private RPCHistoryInfoGetterInterface historyInfoGetter;
+	private VideoManager videoManager;
 	private Gson gson=new Gson();
 
 	public RPCMachineFlowRecordManagerInterface getFlowRecordManager() {
@@ -36,14 +45,75 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 			throws ServletException, IOException {
 		FrontEndingCommunicationProtocol<Map<String,Object>> result = new FrontEndingCommunicationProtocol<Map<String,Object>>();
 		try {
-			if (message.getOperateType().equals(OperateTypeConstant.OPERATE_QUERY)) {
+			if (message.getOperateType().equals(HistoryAskConstant.OPERATE_QUERY)) {
 				query(message, result);
+				result.setStatusOk();
+			}else if (message.getOperateType().equals(HistoryAskConstant.OPERATE_ASKFORHISTORY_BYITEMANDMACHINE)){
+				askforHistoryByItemAndMachine(message, result);
+				result.setStatusOk();
+			}else if (message.getOperateType().equals(HistoryAskConstant.OPERATE_ASKFORHISTORY_BYPACKAGEANDMACHINE)){
+				askforHistoryByPackageAndMachine(message,result);
+				result.setStatusOk();
+			}else if (message.getOperateType().equals(HistoryAskConstant.OPERATE_ASKFORVIDEO_BYTIME)){
+				askforVideoByTime(message, result);
 				result.setStatusOk();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	/**
+	 * 根据器械id和设备id查询历史信息
+	 * @param message
+	 * @param result
+	 * @throws Exception
+	 */
+	protected void askforHistoryByItemAndMachine(FrontEndingCommunicationProtocol<Map<String,Object>> message,
+			FrontEndingCommunicationProtocol<Map<String,Object>> result) throws Exception{
+		HistoryAllAskDO msg = getHistoryAllAskedInfo(message).get(0);
+		ItemAllHistoryInfoDO itemAll=historyInfoGetter.getItemAllHistoryOnSpecifiedMachine(msg.getId(), msg.getMachineId(), msg.getLength(), msg.getOffset());
+		System.out.println("查询器械数据："+gson.toJson(itemAll));
+		result.getRows().add(getFrontEndingRequest(itemAll).toMapping());
+	}
+	/**
+	 * 根据手术包id和设备id查询历史信息
+	 * @param message
+	 * @param result
+	 * @throws Exception
+	 */
+	protected void askforHistoryByPackageAndMachine(FrontEndingCommunicationProtocol<Map<String,Object>> message,
+			FrontEndingCommunicationProtocol<Map<String,Object>> result) throws Exception{
+		HistoryAllAskDO msg = getHistoryAllAskedInfo(message).get(0);
+		PackageAllHistoryInfoDO packAll=historyInfoGetter.getPackageAllHistoryOnSpecifiedMachine(msg.getId(), msg.getMachineId(), msg.getLength(), msg.getOffset());
+		System.out.println("查询手术包数据："+gson.toJson(packAll));
+		result.getRows().add(getFrontEndingRequest(packAll).toMapping());
+	}
+	
+	/**
+	 * 根据起止时间和设备id查询录像信息
+	 * @param message
+	 * @param result
+	 * @throws Exception
+	 */
+	protected void askforVideoByTime(FrontEndingCommunicationProtocol<Map<String,Object>> message,
+			FrontEndingCommunicationProtocol<Map<String,Object>> result)  throws Exception{
+		HistoryVideoAskDO msg=getVideoAskCondition(message).get(0);
+		VideoInfoDO[] infos=videoManager.getVideoByTimeAndMachineId(msg.getStartTime(), msg.getEndTime(), msg.getMachineId());
+		for (VideoInfoDO info:infos){
+			result.getRows().add(getFrontEndingRequest(info).toMapping());
+		}
+	}
+	
+	protected List<HistoryVideoAskDO> getVideoAskCondition(FrontEndingCommunicationProtocol<Map<String,Object>> message) throws Exception{
+		//TODO 需要解析数据
+		return null;
+	}
+	
+	protected List<HistoryAllAskDO> getHistoryAllAskedInfo(FrontEndingCommunicationProtocol<Map<String,Object>> message)  throws Exception{
+		//TODO 需要解析数据
+		return null;
 	}
 
 	protected void query(FrontEndingCommunicationProtocol<Map<String,Object>> message,
@@ -87,9 +157,13 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 	private String itemStatus;
 	private Integer equipmentId;
 	
-	
 	private Integer packageId;
 	private String packageStatus;
+	
+	private ExPackageHistoryDO[] packs;
+	private ExItemHistoryDO[] items;
+	private Date startTime;
+	private Date endTime;
 	 * @param info
 	 * @return
 	 */
@@ -110,6 +184,31 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 			ProtocolUtils.notNullSet(condition.getCondition(), "equipmentId", ProtocolUtils.GetProperty(info, "equipmentId"));
 			ProtocolUtils.notNullSet(condition.getCondition(), "processName", ProtocolUtils.GetProperty(info, "processName"));
 			ProtocolUtils.notNullSet(condition.getCondition(), "staffInfo", ProtocolUtils.GetProperty(info, "staffInfo"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "items", ProtocolUtils.GetProperty(info, "items"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "packs", ProtocolUtils.GetProperty(info, "packs"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "startTime", ProtocolUtils.GetProperty(info, "startTime"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "endTime", ProtocolUtils.GetProperty(info, "endTime"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return condition;
+	}
+	
+/*	
+	private byte[] data;
+	private String name;
+	private Date startTime;
+	private Date endTime;
+	private Integer machineId;
+	*/
+	private FrontEndingRequestCondition getFrontEndingRequest(VideoInfoDO info){
+		FrontEndingRequestCondition condition = new FrontEndingRequestCondition();
+		try {
+			ProtocolUtils.notNullSet(condition.getCondition(), "data", ProtocolUtils.GetProperty(info, "data"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "name", ProtocolUtils.GetProperty(info, "name"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "startTime", ProtocolUtils.GetProperty(info, "startTime"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "endTime", ProtocolUtils.GetProperty(info, "endTime"));
+			ProtocolUtils.notNullSet(condition.getCondition(), "machineId", ProtocolUtils.GetProperty(info, "machineId"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -155,6 +254,22 @@ public class FlowRecordManagerExecutor implements FrontEndingCommunicationExecut
 			ret.add(record);
 		}
 		return ret;
+	}
+
+	public RPCHistoryInfoGetterInterface getHistoryInfoGetter() {
+		return historyInfoGetter;
+	}
+
+	public void setHistoryInfoGetter(RPCHistoryInfoGetterInterface historyInfoGetter) {
+		this.historyInfoGetter = historyInfoGetter;
+	}
+
+	public VideoManager getVideoManager() {
+		return videoManager;
+	}
+
+	public void setVideoManager(VideoManager videoManager) {
+		this.videoManager = videoManager;
 	}
 
 }

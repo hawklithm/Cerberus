@@ -122,6 +122,7 @@
 	<!-- 流水信息交互 -->
 	<bean id="flowRecordManagerExecutor" class="com.hawklithm.cerberus.executor.FlowRecordManagerExecutor">
 		<property name="flowRecordManager" ref="flowRecordManager" />
+		<property name="historyInfoGetter" ref="historyInfoGetter"/>
 	</bean>
 <!--  	<bean id="FlowRecordServlet" class="com.hawklithm.cerberus.servlet.FlowRecordManagerServlet">
 		<property name="authenticationManager" ref="authenticationManager" />

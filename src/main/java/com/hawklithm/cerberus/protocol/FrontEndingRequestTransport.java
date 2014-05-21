@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 public class FrontEndingRequestTransport {
+	/*
+	 * 运单消息协议
+	 * main运单
+	 * subs(
+	 * 
+	 */
 	public static String MAIN_OBJECT = "main";
 	public static String SUBS_OBJECT = "subs";
 	private Map<String, Object> main;// = new HashMap<String, Object>();

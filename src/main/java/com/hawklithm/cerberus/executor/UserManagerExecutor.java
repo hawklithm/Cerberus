@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import com.hawklithm.cerberus.protocol.FrontEndingCommunicationProtocol;
 import com.hawklithm.cerberus.protocol.FrontEndingRequestCondition;
 import com.hawklithm.cerberus.protocol.OperateTypeConstant;
+import com.multiagent.hawklithm.staff.DO.StaffInfoDO;
+import com.multiagent.hawklithm.staff.interface4rpc.RPCStaffInfoManagerInterface;
 import com.multiagent.hawklithm.user.DO.SqlUserInfoDO;
 import com.multiagent.hawklithm.user.interface4rpc.RPCUserInfoManagerInterface;
 
@@ -17,7 +19,7 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 
 
 	private RPCUserInfoManagerInterface userInfoManager;
-
+    private RPCStaffInfoManagerInterface staffInfoManager;
 	@Override
 	public FrontEndingCommunicationProtocol<Map<String,Object>> execute(FrontEndingCommunicationProtocol<Map<String,Object>> message)
 			throws ServletException, IOException {
@@ -36,12 +38,57 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 				update(message);
 				result.setStatusOk();
 			}
+			else if(message.getOperateType().equals(OperateTypeConstant.OPERATE_LOGIN)){
+				
+				login(message,result);
+				result.setStatusOk();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
+	/*
+	 * 专门用于客户端的登陆
+	 */
+	protected void login(FrontEndingCommunicationProtocol<Map<String,Object>> message,
+			FrontEndingCommunicationProtocol<Map<String,Object>> result) throws Exception {
+		if(message.getRows().size()>1){
+			throw new Exception("查询条件只能包含一个员工信息");
+		}
+		SqlUserInfoDO msg=getOrderCluster(message).get(0);
+		SqlUserInfoDO u=null;
+		if (msg.getUserId() != null) {
+		  u=userInfoManager.selectUserById(msg.getUserId());
+		} else if (msg.getUserName() != null) {
+			u=userInfoManager.selectUserByUserName(msg.getUserName());
+		} else {
+			SqlUserInfoDO[] clusters = userInfoManager.selectUser(null, null, msg.getLevel(),
+					msg.getIsEmployee(), msg.getHospitalId(), message.getOffset(),
+					message.getLength());
+		}
+		if(u.getIsEmployee()){
+			StaffInfoDO[] infos = staffInfoManager.queryById(u.getStaffId());
+			for (StaffInfoDO index : infos) {
+				result.getRows().add(getRequesting(index).toMapping());
+			}
+		}
+	}
+	private FrontEndingRequestCondition getRequesting(StaffInfoDO info) {
+		FrontEndingRequestCondition condition = new FrontEndingRequestCondition();
+		if(info!=null){
+			condition.getCondition().put("staffId", info.getStaffId());
+			condition.getCondition().put("staffName", info.getStaffName());
+			condition.getCondition().put("staffPhoneNumber", info.getStaffPhoneNumber());
+			condition.getCondition().put("staffGender", info.getStaffGender());
+			condition.getCondition().put("staffAge", info.getStaffAge());
+			condition.getCondition().put("staffDepartmentName", info.getStaffDepartmentName());
+			condition.getCondition().put("userIconPath", info.getUserIconPath());
+	
+		}
 
+		return condition;
+	}
 	protected void query(FrontEndingCommunicationProtocol<Map<String,Object>> message,
 			FrontEndingCommunicationProtocol<Map<String,Object>> result) throws Exception {
 		if (message.getRows().size() > 1) {
@@ -74,7 +121,7 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 			condition.getCondition().put("isEmployee", userInfo.getIsEmployee());
 			condition.getCondition().put("hospitalId", userInfo.getHospitalId());
 			condition.getCondition().put("enable", userInfo.getEnable());
-		
+		    condition.getCondition().put("staffId",userInfo.getStaffId());      
 		}
 
 		return condition;
@@ -122,8 +169,9 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 			FrontEndingRequestCondition msg=new FrontEndingRequestCondition(index);
 			SqlUserInfoDO userInfo = new SqlUserInfoDO();
 			if (msg.getCondition().containsKey("userId")) {
-				userInfo.setUserId((Integer) msg.getCondition().get("userId"));
-			}
+			     userInfo.setUserId(Double.valueOf((Double)msg.getCondition().get("userId")).intValue());
+				//userInfo.setUserId((Integer) msg.getCondition().get("userId"));
+			     }
 			if (msg.getCondition().containsKey("userName")) {
 				userInfo.setUserName((String) msg.getCondition().get("userName"));
 			}
@@ -142,6 +190,9 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 			if (msg.getCondition().containsKey("enable")) {
 				userInfo.setEnable((Boolean) msg.getCondition().get("enable"));
 			}
+			if (msg.getCondition().containsKey("staffId")) {
+				userInfo.setEnable((Boolean) msg.getCondition().get("staffId"));
+			}
 			ret.add(userInfo);
 		}
 		return ret;
@@ -154,5 +205,10 @@ public class UserManagerExecutor implements FrontEndingCommunicationExecutor{
 	public void setUserInfoManager(RPCUserInfoManagerInterface userInfoManager) {
 		this.userInfoManager = userInfoManager;
 	}
-
+	public RPCStaffInfoManagerInterface getStaffInfoManager() {
+		return staffInfoManager;
+	}
+	public void setStaffInfoManager(RPCStaffInfoManagerInterface staffInfoManager) {
+		this.staffInfoManager = staffInfoManager;
+	}
 }

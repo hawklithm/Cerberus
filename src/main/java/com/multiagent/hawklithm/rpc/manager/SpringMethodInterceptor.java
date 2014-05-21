@@ -12,7 +12,11 @@ import com.google.gson.Gson;
 import com.multiagent.hawklithm.davinci.rpc.DO.RPCSystemProtocol;
 import com.multiagent.hawklithm.rpc.DAO.RPCSystemProtocolPackageUtil;
 import com.multiagent.hawklithm.rpc.net.RPCClient;
-
+/*
+ * 在电脑客户端真正调用的某方法的时候采用netty与xinhua进行传输,
+ * 得到相应的返回值
+ * 
+ */
 public class SpringMethodInterceptor implements MethodInterceptor {
 
 	private RpcRegManager rpcProxyRegManager;
@@ -32,6 +36,7 @@ public class SpringMethodInterceptor implements MethodInterceptor {
 		rpcClient.sendRPCProtocol(message);
 		UUID uuidOrigin = message.uuid;
 		RPCSystemProtocol recvMessage = lockManager.waitforAnswer(uuidOrigin);
+		System.out.println("姚阿龙");
 		System.out.println("get return message");
 		Class<?> returnType = inv.getMethod().getReturnType();
 		String exceptionString = recvMessage.getException();

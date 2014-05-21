@@ -104,5 +104,23 @@
 			value="com.multiagent.hawklithm.shadowsong.manager.interface4rpc.RPCAnnouncementManager" />
 		<property name="version" value="1.0.0.hawky" />
 	</bean>
+	<bean id="historyInfoGetter" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.history.interface4rpc.RPCHistoryInfoGetterInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+<!--  	
+	<bean id="itemPackMappingInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.itempackmapping.interface4rpc.RPCItemPackMappingInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+	
+	<bean id="packageInfoManager" class="com.multiagent.hawklithm.rpc.manager.RpcSystemProxy">
+		<property name="interfaceName"
+			value="com.multiagent.hawklithm.pack.interface4rpc.RPCPackageInfoManagerInterface" />
+		<property name="version" value="1.0.0.hawky" />
+	</bean>
+	-->
 	
 </beans>
